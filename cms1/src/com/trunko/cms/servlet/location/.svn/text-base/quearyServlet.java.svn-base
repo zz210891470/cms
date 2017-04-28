@@ -1,0 +1,26 @@
+package com.trunko.cms.servlet.location;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class quearyServlet extends HttpServlet {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String keyword = request.getParameter("keyword");
+		request.setAttribute("keyword", keyword);
+		System.out.println(keyword);
+   		request.getRequestDispatcher("queary.jsp").forward(request, response);
+	}
+}

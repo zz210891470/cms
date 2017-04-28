@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="stylesheet" type="text/css" href="../images/style.css">
+<script type="text/javascript" src="../lib/jquery/jquery-1.3.2.min.js"></script>  
+<script type="text/javascript" src="../js/function.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body class="mainbody">
+	<div class="navigation"><a href="javascript:history.go(-1);" class="back">后退</a>首页 &gt; 系统设置管理 &gt; 系统帐号管理</div>
+	<div id="contentTab">
+		<ul class="tab_nav">
+			<li class="selected"><a onclick="tabs('#contentTab',0);" href="javascript:;">编辑帐号信息</a></li>
+		</ul>
+		<div class="tab_con" style="display:block;">
+			<table class="form_table">
+            <col width="180px"><col>
+            <tbody>
+            <tr>
+                <th>管理角色：</th>
+                <td>
+                    <select name="ddlRoleId" id="ddlRoleId" class="select2 required">
+	<option value="">请选择角色...</option>
+	<option value="1">超级管理员</option>
+	<option value="2">编辑用户组</option>
+	<option value="3">演示用户组</option>
+
+</select>
+                </td>
+            </tr>
+            <tr>
+                <th>账户状态：</th>
+                <td>
+                    <span id="rblIsLock"><input id="rblIsLock_0" type="radio" name="rblIsLock" value="0" checked="checked" /><label for="rblIsLock_0">启用 </label><input id="rblIsLock_1" type="radio" name="rblIsLock" value="1" /><label for="rblIsLock_1">禁用 </label></span>
+                </td>
+            </tr>
+            <tr>
+                <th>用户名：</th>
+                <td><input name="txtUserName" type="text" maxlength="100" id="txtUserName" class="txtInput normal required" minlength="2" /><label>*</label></td>
+            </tr>
+            <tr>
+                <th>登录密码：</th>
+                <td><input name="txtUserPwd" type="password" maxlength="100" id="txtUserPwd" class="txtInput normal required" minlength="2" /><label>*</label></td>
+            </tr>
+            <tr>
+                <th>确认密码：</th>
+                <td><input name="txtUserPwd1" type="password" maxlength="100" id="txtUserPwd1" class="txtInput normal required" minlength="6" equalTo="#txtUserPwd" /><label>*</label></td>
+            </tr>
+            <tr>
+                <th>姓名：</th>
+                <td><input name="txtRealName" type="text" maxlength="30" id="txtRealName" class="txtInput normal required" minlength="2" /><label>*</label></td>
+            </tr>
+            <tr>
+                <th>电话：</th>
+                <td><input name="txtTelephone" type="text" maxlength="30" id="txtTelephone" class="txtInput normal" minlength="2" /></td>
+            </tr>
+            <tr>
+                <th>邮箱：</th>
+                <td><input name="txtEmail" type="text" maxlength="50" id="txtEmail" class="txtInput normal email" minlength="2" /></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btnSubmit" /></td>
+            </tr>
+            </tbody>
+        </table>
+		</div>
+	</div>
+</body>
+</html>

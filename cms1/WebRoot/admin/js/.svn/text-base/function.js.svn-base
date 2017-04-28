@@ -1,0 +1,136 @@
+﻿//===========================系统管理JS函数开始================================
+//表格隔行变色
+$(function() {
+	$(".msgtable tr:nth-child(odd)").addClass("tr_odd_bg"); // 隔行变色
+	$(".msgtable tr").hover(function() {
+		$(this).addClass("tr_hover_col");
+	}, function() {
+		$(this).removeClass("tr_hover_col");
+	});
+});
+
+// Tab控制函数
+function tabs(tabId, tabNum) {
+	// 设置点击后的切换样式
+	$(tabId + " .tab_nav li").removeClass("selected");
+	$(tabId + " .tab_nav li").eq(tabNum).addClass("selected");
+	// 根据参数决定显示内容
+	$(tabId + " .tab_con").hide();
+	$(tabId + " .tab_con").eq(tabNum).show();
+}
+
+// 全选取消按钮函数，调用样式如：
+function checkAll(chkobj) {
+	if ($(chkobj).find("span b").text() == "全选") {
+		$(chkobj).find("span b").text("取消");
+		$(".checkall input").attr("checked", true);
+	} else {
+		$(chkobj).find("span b").text("全选");
+		$(".checkall input").attr("checked", false);
+	}
+}
+
+function clearNoNum(obj) {
+	// 先把非数字的都替换掉，除了数字和.
+	obj.value = obj.value.replace(/[^\d.]/g, "");
+	// 必须保证第一个为数字而不是.
+	obj.value = obj.value.replace(/^\./g, "");
+	// 保证只有出现一个.而没有多个.
+	obj.value = obj.value.replace(/\.{2,}/g, ".");
+	// 保证.只出现一次，而不能出现两次以上
+	obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$",
+			".");
+}
+
+/**
+ * 单选框值的回填
+ * 
+ * @param _elementName
+ *            单选框的名称（name）
+ * @param _paramVal
+ *            参数值
+ * @return
+ */
+function checkBack(_elementName, _paramVal) {
+	var radios = document.getElementsByName(_elementName);
+	if (radios != null && radios != undefined && radios != "") {
+		for ( var i = 0; i < radios.length; i++) {
+			var radioVal = radios[i].value;
+			if (_paramVal == radioVal) {
+				radios[i].checked = true;
+			}
+		}
+	}
+}
+
+/**
+ * 备份系统数据
+ * 
+ * @return
+ */
+function backup() {
+	var act = "backup"; // 备份
+	displayLoading(1);
+	jQuery.ajax( {
+		url : basePath + "admin/setting/SysDataServlet",
+		type : "post",
+		dataType : 'json',
+		data : {
+			act : act
+		},
+		success : function(responseText) {
+			if ("success" == responseText) {
+				// 备份成功
+		alert("备份成功！");
+		document.location.reload();
+	} else {
+		// 备份失败
+		alert("备份失败！");
+		displayLoading(2);
+	}
+},
+error : function(responseText) {
+	alert("系统异常，请联系系统管理员...");
+}
+	});
+}
+/**
+ * 展示加载条
+ * @param _type 类型：1显示，2隐藏
+ * @return
+ */
+function displayLoading(_type){
+	if(1 == _type){ //显示
+		var loadDiv = document.getElementById("loadDiv");
+		loadDiv.style.display = "";
+	}else{ //隐藏
+		var loadDiv = $("#loadDiv");
+		loadDiv.style.display = "none";
+	}
+}
+
+/**
+ * 设置开始和结束月份的范围：结束月份必须大于开始月份
+ * 
+ * @param _fromMonth
+ *            开始月
+ * @param _toMonth
+ *            结束月
+ * @return
+ */
+function setMonth(_fromMonth, _toMonth) {
+	var fromMonth = parseInt($("#" + _fromMonth).val());
+	var toMonth = parseInt($("#" + _toMonth).val());
+	var monthHtml = "";
+	for ( var i = 1; i < 13; i++) {
+		if (fromMonth < toMonth && i == toMonth) {
+			monthHtml += "<option value='" + i + "' selected>" + i + "</option>";
+		} else if(i < fromMonth) {
+			monthHtml += "<option value='" + i + "' disabled='disabled'>" + i + "</option>";
+		} else {
+			monthHtml += "<option value='" + i + "'>" + i + "</option>";
+		}
+	}
+	$("#" + _toMonth).html(monthHtml);
+}
+

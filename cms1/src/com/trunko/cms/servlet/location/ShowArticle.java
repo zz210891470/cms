@@ -1,0 +1,242 @@
+package com.trunko.cms.servlet.location;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.trunko.cms.dao.location.LmphDao;
+import com.trunko.cms.dao.location.ShowArticleDao;
+
+public class ShowArticle extends HttpServlet {
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+        doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String location=request.getParameter("lb");
+		
+		LmphDao lmphDao = new LmphDao();
+		lmphDao.LmphUpdate("信息公开");
+		
+		if(location.equals("info")){
+        	showInfo(request,response);
+        }else if(location.equals("xxgk")){
+        	showInfoopen(request,response);    	
+        }else if(location.equals("gkgd")){
+        	showInforeg(request,response);    	
+        }else if(location.equals("ndbg")){
+        	showInforeport(request,response);    	
+        }else if(location.equals("question")){
+        	showQuestion(request,response);    	
+        }else if (location.equals("ldxx")) {
+        	showMailInfo(request,response);
+        }else if (location.equals("zxzx")) {
+        	showConsultInfo(request,response);
+		}
+	//	request.getRequestDispatcher("ShowArticle.jsp").forward(request, response);
+	}
+	
+	/**
+	 * 通过id查找到相应的领导信箱内容
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void showMailInfo(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+	    data+=convert(showArticleDao.getMailData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+			
+        response.setContentType("application/json; charset=utf-8");  
+        response.setHeader("pragma", "no-cache");  
+        response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	/**
+	 * 通过id查找到相应的在线咨询、投诉内容
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void showConsultInfo(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+		data+=convert(showArticleDao.getConsultData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+		
+		response.setContentType("application/json; charset=utf-8");  
+		response.setHeader("pragma", "no-cache");  
+		response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	/**
+	 * 通过id查找到相应的内容
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void showInfo(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+		data+=convert(showArticleDao.getInfoData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+		
+		response.setContentType("application/json; charset=utf-8");  
+		response.setHeader("pragma", "no-cache");  
+		response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	
+	public void showInfoopen(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+	    data+=convert(showArticleDao.getInfoopenData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+			
+        response.setContentType("application/json; charset=utf-8");  
+        response.setHeader("pragma", "no-cache");  
+        response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	
+	public void showInforeg(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+	    data+=convert(showArticleDao.getInforegData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+			
+        response.setContentType("application/json; charset=utf-8");  
+        response.setHeader("pragma", "no-cache");  
+        response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	
+	public void showInforeport(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+	    data+=convert(showArticleDao.getInforeportData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+			
+        response.setContentType("application/json; charset=utf-8");  
+        response.setHeader("pragma", "no-cache");  
+        response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	
+	public void showQuestion(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		String id=request.getParameter("id");
+		try{
+			Long.valueOf(id);
+		}catch(Exception e){
+			return;
+		}
+		ShowArticleDao showArticleDao=new ShowArticleDao();
+		String data="[\"SUCCESS\",\"";
+	    data+=convert(showArticleDao.getQuestionData(id));
+		data+="\"]";
+		PrintWriter out = response.getWriter();
+			
+        response.setContentType("application/json; charset=utf-8");  
+        response.setHeader("pragma", "no-cache");  
+        response.setHeader("cache-control", "no-cache");  
+		out.write(data);
+		out.close();
+	}
+	/**
+	* 将字符串转成unicode
+	* @param str 待转字符串
+	* @return unicode字符串
+	*/ 
+	public String convert(String str)
+	{
+		str = (str == null ? "" : str);
+		String tmp;
+		StringBuffer sb = new StringBuffer(1000);
+		char c;
+		int i, j;
+		sb.setLength(0);
+		for (i = 0; i < str.length(); i++)
+		{
+		c = str.charAt(i);
+		sb.append("\\u");
+		j = (c >>>8); //取出高8位
+		tmp = Integer.toHexString(j);
+		if (tmp.length() == 1)
+		sb.append("0");
+		sb.append(tmp);
+		j = (c & 0xFF); //取出低8位
+		tmp = Integer.toHexString(j);
+		if (tmp.length() == 1)
+		sb.append("0");
+		sb.append(tmp);
+	
+		}
+		return (new String(sb));
+	} 
+}

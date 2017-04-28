@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+<link href="images/lrtk.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="images/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="images/koala.min.1.5.js"></script>
+<script type="text/javascript" src="images/terminator2.2.min.js"></script>
+</head>
+<body>
+<!-- 代码 开始 -->
+<div id="fsD1" class="focus">  
+    <div id="D1pic1" class="fPic"> 
+        <div class="fcon" style="display: none;">
+            <a target="_blank" href="#"><img src="http://zdxmb.longyan.gov.cn:80/upload/20159/1441074909105.jpg" border="0" style="opacity: 1;" /></a>
+            <span class="shadow"><a target="_blank" href="#">龙岩市重大投资项目督查推进会...</a></span>
+        </div>
+		
+        <div class="fcon" style="display: none;">
+            <a target="_blank" href="#"><img src="http://zdxmb.longyan.gov.cn:80/upload/20157/1436843755765.jpg" border="0" style="opacity: 1;" /></a>
+            <span class="shadow"><a target="_blank" href="#">永定天子温泉·万林水 永定天子温泉·万林水</a></span>
+        </div>
+		
+        <div class="fcon" style="display: none;">
+            <a target="_blank" href="#"><img src="http://zdxmb.longyan.gov.cn:80/upload/201411/1416293459691.jpg" border="0" style="opacity: 1;" /></a>
+            <span class="shadow"><a target="_blank" href="#">龙岩大道高架桥工程引</a></span>
+        </div>
+		
+        <div class="fcon" style="display: none;">
+            <a target="_blank" href="#"><img src="http://zdxmb.longyan.gov.cn:80/upload/20147/1406625060766.jpg" border="0" style="opacity: 1;" /></a>
+            <span class="shadow"><a target="_blank" href="#">赣龙复线红土亭特大桥</a></span>
+        </div>
+		 
+        <div class="fcon" style="display: none;">
+            <a target="_blank" href="#"><img src="http://zdxmb.longyan.gov.cn:80/upload/201411/1416293459691.jpg" border="0" style="opacity: 1;" /></a>
+            <span class="shadow"><a target="_blank" href="#">龙岩大道高架桥工程引</a></span>
+        </div>
+    </div>
+    <div class="fbg">  
+    <div class="D1fBt" id="D1fBt">  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>5</i></a>   
+    </div>  
+    </div>  
+    <span class="prev"></span>   
+    <span class="next"></span>    
+</div>  
+<script type="text/javascript">
+	Qfast.add('widgets', { path: "images/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   //焦点图包裹id  
+			conId: "D1pic1",  //** 大图域包裹id  
+			tabId:"D1fBt",  
+			tabTn:"a",
+			conCn: '.fcon', //** 大图域配置class       
+			auto: 1,   //自动播放 1或0
+			effect: 'fade',   //效果配置
+			eType: 'click', //** 鼠标事件
+			pageBt:true,//是否有按钮切换页码
+			bns: ['.prev', '.next'],//** 前后按钮配置class                          
+			interval: 5000  //** 停顿时间  
+		}) 
+	})  
+</script>
+<!-- 代码 结束 -->
+</body>
+</html>

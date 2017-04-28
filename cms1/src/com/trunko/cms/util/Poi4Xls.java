@@ -1,0 +1,638 @@
+package com.trunko.cms.util;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import com.trunko.project.entity.ProCbxm;
+import com.trunko.project.entity.ProZdaxm;
+import com.trunko.project.entity.ProZsxm;
+
+/**
+ * 解析xls格式的Excel文档
+ * @author gjz
+ *
+ */
+public class Poi4Xls {
+
+    public static void main( String[] args) throws IOException {
+        Poi4Xls xlsMain = new Poi4Xls(); 
+        
+        
+       // xlsMain.readXls("");
+    }
+    /**
+     * 获取招商项目信息对象
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public  List<ProZsxm> readXlsForZsxm(String path) throws IOException{
+    	List<ProZsxm> zsxmList= new ArrayList<ProZsxm>();
+     //  InputStream is = new FileInputStream("D:\\baidu\\项目测试.xls");
+        InputStream is = new FileInputStream(path);
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook( is); 
+        String flag = "";
+        
+        
+            
+
+        Exp:
+        // 循环工作表Sheet
+        for(int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++){
+            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt( numSheet);
+            if(hssfSheet == null){
+                continue;
+            }
+            
+            // 循环行Row 
+            for(int rowNum = 2; rowNum <= hssfSheet.getLastRowNum(); rowNum++){
+                HSSFRow hssfRow = hssfSheet.getRow( rowNum);
+                if(hssfRow == null){
+                    continue;
+                }
+                ProZsxm zsxm = new ProZsxm();
+                // 循环列Cell  
+                for(int cellNum = 0; cellNum <= hssfRow.getLastCellNum(); cellNum++){
+                    HSSFCell hssfCell = hssfRow.getCell( cellNum);
+                    if(hssfCell == null){
+                        continue;
+                    }      
+
+                    System.out.print("    " + getValue( hssfCell));
+                   
+					switch (cellNum) {
+
+						case 0: {
+							try { // 项目年度
+								zsxm.setNd(Long.valueOf(getValue(hssfCell)));
+							} catch (NumberFormatException e) {
+								System.out.println("第" + (rowNum+1) + "行第"
+										+ (cellNum + 1) + "列出错应为整形");
+								flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+										+ "列【项目年度】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+								break Exp;
+							}
+							break;
+						}
+						case 1: { //项目名称
+							zsxm.setMc(getValue(hssfCell));
+							break;
+						}
+						case 2: { // 项目地区
+							zsxm.setDq(getValue(hssfCell));
+							break;
+						}
+						case 3: { // 行业大类
+							zsxm.setLb1(getValue(hssfCell));
+							break;
+						}
+						case 4: { // 行业小类
+							zsxm.setLb2(getValue(hssfCell));
+							break;
+						}
+						case 5: { // 建设规模
+							zsxm.setJsgm(getValue(hssfCell));
+							break;
+						}
+						case 6: { // 总投资
+							try { 
+								Float ztz = FavoritesHelper.stringTofloat(getValue(hssfCell));
+								zsxm.setZtz(String.valueOf(ztz));
+							} catch (NumberFormatException e) {
+								System.out.println("第" + (rowNum+1) + "行第"
+										+ (cellNum + 1) + "列出错应为整形");
+								flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+										+ "列【总投资】出错，格式应为数字！请修改后重新导入";
+								break Exp;
+							}
+							
+							break;
+						}
+						case 7: { // 合作方式
+							zsxm.setHzfs(getValue(hssfCell));
+							break;
+						}
+						case 8: { // 联系单位
+							zsxm.setLxdw(getValue(hssfCell));
+							break;
+						}
+						case 9: { // 联系人
+							zsxm.setLxr(getValue(hssfCell));
+							break;
+						}
+						case 10: { // 联系电话
+							zsxm.setLxdh(getValue(hssfCell));
+							break;
+						}
+						case 11: { // 近期工作
+							zsxm.setQqgz(getValue(hssfCell));
+							break;
+						}
+					}
+       
+                }
+                zsxmList.add(zsxm);
+                System.out.println();
+            }
+            
+            
+        }
+        
+        if(!flag.equals("")){
+        	zsxmList.clear();
+        	ProZsxm zsxm = new ProZsxm();
+        	zsxm.setNd(10000l);
+        	zsxm.setMc(flag);
+            zsxmList.add(zsxm);	
+            return zsxmList;
+        }
+        
+        
+        return zsxmList;
+    }
+  
+    /**
+     * 获取储备项目信息对象
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public  List<ProCbxm> readXlsForCbxm(String path) throws IOException{
+    	List<ProCbxm> cbxmList= new ArrayList<ProCbxm>();
+     //  InputStream is = new FileInputStream("D:\\baidu\\项目测试.xls");
+        InputStream is = new FileInputStream(path);
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook( is); 
+        String flag = "";
+    
+        Exp:
+        // 循环工作表Sheet
+        for(int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++){
+            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt( numSheet);
+            if(hssfSheet == null){
+                continue;
+            }
+            
+            // 循环行Row 
+            for(int rowNum = 2; rowNum <= hssfSheet.getLastRowNum(); rowNum++){
+                HSSFRow hssfRow = hssfSheet.getRow( rowNum);
+                if(hssfRow == null){
+                    continue;
+                }
+                ProCbxm cbxm = new ProCbxm();
+                // 循环列Cell  
+                for(int cellNum = 0; cellNum <= hssfRow.getLastCellNum(); cellNum++){
+                    HSSFCell hssfCell = hssfRow.getCell( cellNum);
+                    if(hssfCell == null){
+                        continue;
+                    }      
+
+                    System.out.print("    " + getValue( hssfCell));
+                   
+                    switch(cellNum){
+
+					case 0: {
+						try { // 项目年度
+							cbxm.setNd(Long.valueOf(getValue(hssfCell)));
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【项目年度】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 1: { //项目名称
+						cbxm.setMc(getValue(hssfCell));
+						break;
+					}
+					case 2: { // 建设地区
+						cbxm.setDq(getValue(hssfCell));
+						break;
+					}
+					case 3: { // 建设地点
+						cbxm.setJsdd(getValue(hssfCell));
+						break;
+					}
+					case 4: { // 行业大类
+						cbxm.setLb1(getValue(hssfCell));
+						break;
+					}
+					case 5: { // 行业小类
+						cbxm.setLb2(getValue(hssfCell));
+						break;
+					}
+					case 6: { // 报告书类别
+						cbxm.setBgs(getValue(hssfCell));
+						break;
+					}
+					case 7: { // 申报单位
+						cbxm.setSbdw(getValue(hssfCell));
+						break;
+					}
+					case 8: { // 联系人
+						cbxm.setLxr(getValue(hssfCell));
+						break;
+					}
+					case 9: { // 联系电话
+						cbxm.setLxdh(getValue(hssfCell));
+						break;
+					}
+					case 10: { // 电子邮箱
+						cbxm.setDzyx(getValue(hssfCell));
+						break;
+					}
+					case 11: { // 策划单位
+						cbxm.setChdw(getValue(hssfCell));
+						break;
+					}
+					case 12: { // 资质等级
+						cbxm.setZzdj(getValue(hssfCell));
+						break;
+					}
+					case 13: { // 联系人
+						cbxm.setLxr1(getValue(hssfCell));
+						break;
+					}
+					case 14: { // 联系电话
+						cbxm.setLxdh1(getValue(hssfCell));
+						break;
+					}
+					case 15: { // 电子邮箱
+						cbxm.setDzyx1(getValue(hssfCell));
+						break;
+					}
+					case 16: { // 承办单位
+						cbxm.setCbdw(getValue(hssfCell));
+						break;
+					}
+					case 17: { // 联系人
+						cbxm.setLxr2(getValue(hssfCell));
+						break;
+					}
+					case 18: { // 联系电话
+						cbxm.setLxdh2(getValue(hssfCell));
+						break;
+					}
+					case 19: { // 电子邮箱
+						cbxm.setDzyx2(getValue(hssfCell));
+						break;
+					}
+					case 20: { // 合作方式
+						cbxm.setHzfs(getValue(hssfCell));
+						break;
+					}
+					case 21: { // 项目提出的理由与过程
+						cbxm.setLygc(getValue(hssfCell));
+						break;
+					}
+					case 22: { // 项目总投资（万元）
+						try { 
+							Double ztz =Double.valueOf(getValue(hssfCell));
+							cbxm.setZtz(ztz);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【总投资】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						
+						break;
+					}
+					case 23: { // 项目建设规模及内容
+						cbxm.setJsgm(getValue(hssfCell));
+						break;
+					}
+					case 24: { // 项目主要建设条件
+						cbxm.setJstj(getValue(hssfCell));
+						break;
+					}
+					case 25: { // 项目经济效益分析
+						cbxm.setXyfx(getValue(hssfCell));
+						break;
+					}
+					case 26: { // 主要技术经济指标
+						cbxm.setJsjjzb(getValue(hssfCell));
+						break;
+					}
+					case 27: { // 项目前期推进状况
+						cbxm.setTjzk(getValue(hssfCell));
+						break;
+					}
+					case 28: { // 报送时间
+						String bssj = getValue(hssfCell);
+						try {
+							cbxm.setBssj(FavoritesHelper.stringToDate(bssj));
+						} catch (ParseException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【报送时间】出错，时间格式应为：2014-01-01！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+				}
+       
+                }
+                cbxm.setZt("已审核");
+                cbxm.setShyj("同意");
+                cbxmList.add(cbxm);
+            }
+            
+            
+        }
+        if(!flag.equals("")){
+        	cbxmList.clear();
+        	ProCbxm cbxm = new ProCbxm();
+        	cbxm.setNd(10000l);
+        	cbxm.setMc(flag);
+        	cbxmList.add(cbxm);	
+            return cbxmList;
+        }
+        return cbxmList;
+    }
+  
+    /**
+     * 获取重大项目信息对象
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public  List<ProZdaxm> readXlsForZdaxm(String path) throws IOException{
+    	List<ProZdaxm> zdaxmList= new ArrayList<ProZdaxm>();
+        InputStream is = new FileInputStream(path);
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook( is); 
+        String flag = "";
+    
+        Exp:
+        // 循环工作表Sheet
+        for(int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++){
+            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt( numSheet);
+            if(hssfSheet == null){
+                continue;
+            }
+            
+            // 循环行Row 
+            for(int rowNum = 2; rowNum <= hssfSheet.getLastRowNum(); rowNum++){
+                HSSFRow hssfRow = hssfSheet.getRow( rowNum);
+                if(hssfRow == null){
+                    continue;
+                }
+                ProZdaxm zdaxm = new ProZdaxm();
+                // 循环列Cell  
+                for(int cellNum = 0; cellNum <= hssfRow.getLastCellNum(); cellNum++){
+                    HSSFCell hssfCell = hssfRow.getCell( cellNum);
+                    if(hssfCell == null){
+                        continue;
+                    }      
+
+                    System.out.print("    " + getValue( hssfCell));
+                   
+                    switch(cellNum){
+
+					case 0: {
+						try { // 项目年度
+							zdaxm.setNd(Long.valueOf(getValue(hssfCell)));
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【项目年度】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 1: { //项目名称
+						zdaxm.setMc(getValue(hssfCell));
+						break;
+					}
+					case 2: { // 建设地区
+						zdaxm.setDq(getValue(hssfCell));
+						break;
+					}
+					case 3: { // 建设地点
+						zdaxm.setJsdd(getValue(hssfCell));
+						break;
+					}
+					case 4: { // 行业大类
+						zdaxm.setLb1(getValue(hssfCell));
+						break;
+					}
+					case 5: { // 行业小类
+						zdaxm.setLb2(getValue(hssfCell));
+						break;
+					}
+					case 6: { // 建设规模
+						zdaxm.setJsgm(getValue(hssfCell));
+						break;
+					}
+					case 7: { // 总投资
+						try { 
+							Long ztz = FavoritesHelper.stringTolong(getValue(hssfCell));
+							zdaxm.setZtz(ztz);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【总投资】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 8: { // 备案文号
+						zdaxm.setBawh(getValue(hssfCell));
+						break;
+					}
+					case 9: { // 建设年限（自）
+						try { 
+							int jsnx1 = FavoritesHelper.stringToint(getValue(hssfCell));
+							zdaxm.setJsnx1(jsnx1);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【建设年限（自）】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 10: { // 建设年限（至）
+						try { 
+							int jsnx2 = FavoritesHelper.stringToint(getValue(hssfCell));
+							zdaxm.setJsnx2(jsnx2);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【建设年限（至）】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 11: { // 计划投资
+						try { 
+							Long jhtz = FavoritesHelper.stringTolong(getValue(hssfCell));
+							zdaxm.setJhtz(jhtz);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【计划投资】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 12: { // 进度目标
+						zdaxm.setJdmb(getValue(hssfCell));
+						break;
+					}
+					case 13: { // 开工年份
+						try { 
+							Long kgnf = FavoritesHelper.stringTolong(getValue(hssfCell));
+							String kgn = String.valueOf(kgnf);
+							zdaxm.setKgn(kgn);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【开工年份】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 14: { // 开工月份
+						try { 
+							Long kgyf = FavoritesHelper.stringTolong(getValue(hssfCell));
+							String kgy = String.valueOf(kgyf);
+							zdaxm.setKgy(kgy);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【开工月份】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 15: { // 竣工年份
+						try { 
+							Long jgnf = FavoritesHelper.stringTolong(getValue(hssfCell));
+							String jgn = String.valueOf(jgnf);
+							zdaxm.setJgn(jgn);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【竣工年份】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 16: { // 竣工月份
+						try { 
+							Long jgyf = FavoritesHelper.stringTolong(getValue(hssfCell));
+							String jgy = String.valueOf(jgyf);
+							zdaxm.setJgy(jgy);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+									+ "列【竣工月份】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 17: { // 用地面积
+						try { 
+							float yd = FavoritesHelper.stringTofloat(getValue(hssfCell));
+							zdaxm.setYd(yd);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+							+ "列【用地面积】出错，格式应为整字！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 18: { // 用林面积
+						try { 
+							float yl = FavoritesHelper.stringTofloat(getValue(hssfCell));
+							zdaxm.setLd(yl);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+							+ "列【用林面积】出错，格式应为数字！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+					case 19: { // 累计完成投资
+						try {
+							Long wctz = FavoritesHelper.stringTolong(getValue(hssfCell));
+							zdaxm.setWctz(wctz);
+						} catch (NumberFormatException e) {
+							System.out.println("第" + (rowNum+1) + "行第"
+									+ (cellNum + 1) + "列出错应为整形");
+							flag = "第" + (rowNum+1) + "行第" + (cellNum + 1)
+							+ "列【累计完成投资】出错，格式应为整数，不能有小数点和字母！请修改后重新导入";
+							break Exp;
+						}
+						break;
+					}
+				}
+       
+                }
+                zdaxm.setZt("已审核");
+                zdaxm.setShyj("同意");
+                zdaxmList.add(zdaxm);
+            }
+            
+            
+        }
+        if(!flag.equals("")){
+        	zdaxmList.clear();
+        	ProZdaxm zdaxm = new ProZdaxm();
+        	zdaxm.setNd(10000l);
+        	zdaxm.setMc(flag);
+        	zdaxmList.add(zdaxm);	
+            return zdaxmList;
+        }
+        return zdaxmList;
+    }
+    
+    /**
+    * 获取单元格内的值，布尔型，数值型， 字符型
+    * @param hssfCell
+    * @return
+    */
+    @SuppressWarnings("static-access")
+    private String getValue(HSSFCell hssfCell){
+    	
+        if(hssfCell.getCellType() == hssfCell.CELL_TYPE_BOOLEAN){
+        	
+            return String.valueOf( hssfCell.getBooleanCellValue());
+        }else if(hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC){
+        	
+            return String.valueOf( hssfCell.getNumericCellValue());
+        }else{
+        	
+            return String.valueOf( hssfCell.getStringCellValue());
+        }
+    }
+  
+}
+
+

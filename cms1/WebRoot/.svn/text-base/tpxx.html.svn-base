@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>龙岩市重点项目开发建设管理办公室</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div style="width:1020px;background-image:url(images/line_bg.png); margin:auto;">
+	<div style=" text-align:center;"><iframe src="top.html" style="width:1000px;height:270px;" frameborder="0" scrolling="no"></iframe></div>
+    <div class="mainbody" align="center">
+    	<div class="infolist_left">
+        
+        </div>
+    <div class="infolist_right">
+        	<div class="address"><span>当前位置：<a href="#" target="_self">网站首页</a> > 信息公开</span></div>
+      </div>
+    </div>
+	<div style=" text-align:center;"><iframe src="footer.html" style="width:1000px;height:90px;margin-top:10px;" frameborder="0" scrolling="no"></iframe></div>    
+</div>
+</body>
+</html>

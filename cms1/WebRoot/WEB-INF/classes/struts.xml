@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 开发模式，不用重启服务器 -->
+    <!-- 开启使用开发模式，详细错误提示 -->
+    <!--  <constant name="struts.devMode" value="true"/>-->
+    <!-- 指定每次请求到达，重新加载资源文件 -->
+     <constant name="struts.i18n.reload" value="true"/>
+    <!-- 指定每次配置文件更改后，自动重新加载 -->
+     <constant name="struts.configuration.xml.reload" value="true"/>
+    <!-- 指定XSLT Result使用样式表缓存 -->
+    <!-- <constant name="struts.xslt.nocache" value="true"/>-->
+     <constant name="struts.ui.theme" value="simple" />
+     <constant name="struts.multipart.maxSize" value="10000000"></constant>
+
+     <package name="file" namespace="/action" extends="struts-default">
+     	<action name="imgupload" class="com.trunko.cms.actions.file.ImgUpload" method="upload">      
+
+		    <interceptor-ref name="defaultStack">
+		    		
+		    			
+		    <param name="fileUpload.maximumSize">1024*2048*50</param>  
+            <!-- 配置允许上传文件的类型,如果有多个类型用","隔开 -->  
+            <param name="fileUpload.allowedTypes">
+		    </param> 
+		   </interceptor-ref>
+	    </action>
+	    
+     	<action name="fileupload" class="com.trunko.cms.actions.file.ImgUpload" method="fileupload">      
+                  <interceptor-ref name="defaultStack">
+					<!-- 配置允许上传的文件类型，多个用","分隔 -->  
+				    <param name="fileUpload.allowedTypes"></param>  
+				    <!-- 配置允许上传的文件大小，单位字节 -->  
+				    <param name="fileUpload.maximumSize">1024*2048*500</param>  
+		    	  </interceptor-ref>
+		    		
+	    </action>
+	    
+	    <action name="xlsupload" class="com.trunko.cms.actions.file.ImgUpload" method="xlsupload">      
+                  <interceptor-ref name="defaultStack">
+					<!-- 配置允许上传的文件类型，多个用","分隔 -->  
+				    <param name="fileUpload.allowedTypes"></param>  
+				    <!-- 配置允许上传的文件大小，单位字节 -->  
+				    <param name="fileUpload.maximumSize">1024*2048*500</param>  
+		    	  </interceptor-ref>
+		    		
+	    </action>
+	    
+	    
+	    <action name="filedownload" class="com.trunko.cms.actions.file.ImgUpload" method="download">
+		    		<result name="success" type="stream">
+		    			<!-- 设置要下载的文件类型 -->
+						<param name="contentType">text/plain</param>
+						<!-- 设置文件下载的流 -->
+						<param name="inputName">downloadfile</param> 
+						<!-- 设置文件下载方式:inline->表示直接打开文件；attachment->表示可以保存或者直接打开文件 -->  
+						<param name="contentDisposition">attachment;filename=${downloadname}</param>
+						<!-- 设置下载的缓冲大小 -->
+						<param name="bufferSize">2048</param> 		
+		    		</result>
+		    	</action>
+     </package>
+
+</struts>

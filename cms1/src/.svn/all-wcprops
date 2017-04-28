@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/contentmanagesystem/!svn/ver/182/trunk/newcms/cmsnew/src
+END
+struts.properties
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/contentmanagesystem/!svn/ver/229/trunk/newcms/cmsnew/src/struts.properties
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/contentmanagesystem/!svn/ver/229/trunk/newcms/cmsnew/src/struts.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/log4j.properties
+END

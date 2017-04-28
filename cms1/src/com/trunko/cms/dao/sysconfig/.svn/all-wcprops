@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig
+END
+UrlManageDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/UrlManageDao.java
+END
+SysColumnDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysColumnDao.java
+END
+AdmanageDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/AdmanageDao.java
+END
+SysUserDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysUserDao.java
+END
+SpecialColumnDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SpecialColumnDao.java
+END
+SysDataBackupDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/contentmanagesystem/!svn/ver/237/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysDataBackupDao.java
+END
+SysModelDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysModelDao.java
+END
+SysLogDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysLogDao.java
+END
+SysRoleDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysRoleDao.java
+END
+SysConfigDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/sysconfig/SysConfigDao.java
+END

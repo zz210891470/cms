@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<script type="text/javascript" src="js/jquery-1.3.2.min.js">
+</script>
+<body>
+<div style="height:28px; line-height:28px;">
+    <span style="float:left;">您好，欢迎访问龙岩市项目开发中心</span>
+    <span style="float:right;">
+        <script>
+        function write_date(){
+        var week
+        if(new Date().getDay()==0)          week="星期日"
+        if(new Date().getDay()==1)          week="星期一"
+        if(new Date().getDay()==2)          week="星期二" 
+        if(new Date().getDay()==3)          week="星期三"
+        if(new Date().getDay()==4)          week="星期四"
+        if(new Date().getDay()==5)          week="星期五"
+        if(new Date().getDay()==6)          week="星期六"
+        document.write(new Date().getFullYear()+"年"+(new Date().getMonth()+1)+"月"+new Date().getDate()+"日"+"   "+week)
+        }
+        write_date();
+
+       function search(){
+                if(document.getElementById("txt_keyword").value==""||document.getElementById("txt_keyword").value=="请输入关键字..."){
+					alert("请输入关键字进行查询。");
+					document.getElementById("txt_keyword").focus();
+					return false;
+					}
+                }
+        </script>
+        <a style="color:#000; margin-left:50px;" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://zdxmb.longyan.gov.cn');" href="#">设为主页</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a style="color: #000;" onclick="javascript:window.external.AddFavorite('http://zdxmb.longyan.gov.cn','龙岩市项目开发中心')" href="#">加入收藏</a>
+    </span>
+</div>
+<div id="top_banner" style="height:160px; background:url(images/top.jpg);">
+
+</div>
+ <form action="quearyServlet" method="post"  target="_blank" onsubmit="return search();">
+<div id="top_menu">
+    <span style="float:left;">　
+        <a href="index1.htm" title="网站首页" href="#" target="_top" class="menu">首 页</a> |
+        <a href="subcolumn.htm?loc=jggk" target="_top" class="menu">机构概况</a> |
+        <a href="subcolumn.htm?loc=xxgk" target="_top" class="menu">信息公开</a> |
+        <a href="subcolumn.htm?loc=xmps" target="_top" class="menu">项目评审</a> |
+        <a href="subcolumn.htm?loc=xmcb" target="_top" class="menu">项目储备</a> |
+        <a href="subcolumn.htm?loc=xmzs" target="_top" class="menu">项目推介</a> |
+        <a href="subcolumn.htm?loc=xmzh" target="_top" class="menu">项目转化</a> |
+        <a href="subcolumn.htm?loc=wsbs" target="_top" class="menu">网上办事</a> |
+        <a href="zxzx.html" target="_top" class="menu">公众参与</a>
+    </span>
+    <span style="float:right; color:#ffffff;">
+        <input type="text" name="keyword" id="txt_keyword" value="请输入关键字..." onfocus="if(this.value=='请输入关键字...'){this.value='';this.style.color='#000';}"  onblur="if(this.value==''){this.value='请输入关键字...';this.style.color='#666'}" style="height:19px; line-height:19px; border:0px;color:#666;"/>
+	<input type="image" src="images/jsbotton.gif" style="vertical-align:middle;margin-right:10px;margin-top:-4px;"/>
+    </span>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>龙岩市重点项目开发建设管理办公室</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div style="width:1020px;background-image:url(images/line_bg.png); margin:auto;">
+	<div style=" text-align:center;"><iframe src="top.html" style="width:1000px;height:265px;" frameborder="0" scrolling="no"></iframe></div>
+    <div class="mainbody" align="center">
+    	<div class="index_top_banner">
+        
+        </div>
+        <div class="index_news">
+            <div class="index_picnews">
+            
+            </div>
+            <div class="index_newslist">
+                <div class="index_newslist1" ></div>
+                <span class="index_more"><a href="" target="_blank">更多>></a></span>
+                <div class="index_rdgz">
+                    <h3 class="newsListHot"><span><em id="t1">中共中央关于全面深化改革若干重大..</em><em id="t2">为贯彻落实党的十八大关于全面深化改革的..[<a target="_blank"  href="show.aspx?ctlgid=845463&Id=80212">查看全文</a>]</em></span>
+                    </h3>
+                </div>
+                <div class="index_newslist2">
+                	<ul class="newsList0">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="index_zfxxgk">
+            	<img src="images/zfxxgkl.jpg"/>
+                <div style="border:solid 1px #ccc; border-top:0px;height:210px;">
+                	<img src="images/zfxxgkl1.jpg" border="0" usemap="#Map"/>
+                    <map name="Map" id="Map">
+                      <area shape="rect" coords="42,11,140,24" href="#" target="_blank" />
+                      <area shape="rect" coords="42,44,140,58" href="#" target="_blank" />
+                      <area shape="rect" coords="42,76,140,91" href="#" target="_blank" />
+                      <area shape="rect" coords="42,110,140,124" href="#" target="_blank" />
+                      <area shape="rect" coords="42,142,160,158" href="#" target="_blank" />
+                      <area shape="rect" coords="42,174,150,191" href="#" target="_blank" />
+                    </map>
+                </div>
+            </div>
+            <div class="index_left">
+            	<div class="index_left_xxgk">
+                	<span class="index_more"><a href="" target="_blank">更多>></a></span>
+                </div>
+                <div class="index_left_xxgk1">
+                	<div class="xxgk_list1" id="xxgk1">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xxgk1','xxgk_list1','xxgk_list1','xxgk_list2','xxgk_gsgg','xxgk_zcfg');" id="xxgk_gsgg">公示公告</div>
+                            <div class="xxgk_bt2" onmouseover="change('xxgk1','xxgk_list2','xxgk_list2','xxgk_list1','xxgk_zcfg','xxgk_gsgg');" id="xxgk_zcfg">政策法规</div>
+                        </div>
+                        <div id="xxgk_list1">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                        <div id="xxgk_list2" style="display:none;">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                    </div>
+                	<div class="xxgk_list1" id="xxgk2">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xxgk2','xxgk_list1','xxgk_list3','xxgk_list4','xxgk_xmgl','xxgk_ghjh');" id="xxgk_xmgl">项目管理</div>
+                            <div class="xxgk_bt2" onmouseover="change('xxgk2','xxgk_list2','xxgk_list4','xxgk_list3','xxgk_ghjh','xxgk_xmgl');" id="xxgk_ghjh">规划计划</div>
+                        </div>
+                        <div id="xxgk_list3">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                        <div id="xxgk_list4" style="display:none;">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                    </div>
+                	<div class="xxgk_list1" id="xxgk3">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xxgk3','xxgk_list1','xxgk_list5','xxgk_list6','xxgk_tjxx','xxgk_zjxx');" id="xxgk_tjxx">统计信息</div>
+                            <div class="xxgk_bt2" onmouseover="change('xxgk3','xxgk_list2','xxgk_list6','xxgk_list5','xxgk_zjxx','xxgk_tjxx');" id="xxgk_zjxx">资金信息</div>
+                        </div>
+                        <div id="xxgk_list5">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                        <div id="xxgk_list6" style="display:none;">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                    </div>
+                	<div class="xxgk_list1" id="xxgk4">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xxgk4','xxgk_list1','xxgk_list7','xxgk_list8','xxgk_jgdj','xxgk_lzxn');" id="xxgk_jgdj">机关党建</div>
+                            <div class="xxgk_bt2" onmouseover="change('xxgk4','xxgk_list2','xxgk_list8','xxgk_list7','xxgk_lzxn','xxgk_jgdj');" id="xxgk_lzxn">廉正效能</div>
+                        </div>
+                        <div id="xxgk_list7">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                        <div id="xxgk_list8" style="display:none;">
+                            <ul class="xxgklist">
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                                <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                            </ul>
+                    	</div>
+                    </div>
+                </div>
+                <div class="index_left_banner">
+                
+                </div>
+                <div class="index_left_xmjs">
+                	<span class="index_more"><a href="" target="_blank">更多>></a></span>
+                </div>
+                <div class="index_left_xmjs1">
+                	<div class="xxgk_list1" id="xmjs1">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xmjs1','xxgk_list1','xmjs_list1','xmjs_list2','xmjs_tzhj','xmjs_yhzc');" id="xmjs_tzhj">投资环境</div>
+                            <div class="xxgk_bt2" onmouseover="change('xmjs1','xxgk_list2','xmjs_list2','xmjs_list1','xmjs_yhzc','xmjs_tzhj');" id="xmjs_yhzc">优惠政策</div>
+                        </div>
+                        <div id="xmjs_list1">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                        <div id="xmjs_list2" style="display:none;">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                    </div>
+                    <div class="xxgk_list1" id="xmjs2">
+                    	<div style="margin:5px;">
+                        	<div class="xxgk_bt1" onmouseover="change('xmjs2','xxgk_list1','xmjs_list3','xmjs_list4','xmjs_xmzs','xmjs_xmjs');" id="xmjs_xmzs">项目招商</div>
+                            <div class="xxgk_bt2" onmouseover="change('xmjs2','xxgk_list2','xmjs_list4','xmjs_list3','xmjs_xmjs','xmjs_xmzs');" id="xmjs_xmjs">项目建设</div>
+                        </div>
+                        <div id="xmjs_list3">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙龙岩岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                        <div id="xmjs_list4" style="display:none;">
+                        <ul class="xxgklist">
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国岩岩中国国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                        <li><span>2013-11-19</span>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    	</div>
+                    </div>
+                </div>
+                <div class="index_left_tpxx">
+                	<span class="index_more"><a href="" target="_blank">更多>></a></span>
+                </div>
+                <div class="index_left_tpxx1">
+                	<div class="index_left_tpxx2">
+                    	<div class="tpxx_img"><a href="" target="_blank" title="中国龙中国龙岩中国龙岩中"><img src=""></a></div>
+                        <div class="tpxx_text"><a href="" target="_blank" title="中国龙中国龙岩中国龙岩中">中国龙中国龙岩中国龙岩中</a></div>
+                    </div>
+                </div>
+                <div class="index_left_link" id="link">
+                	<div style="height:30px; text-align:left;"><img src="images/yqlj.jpg"></div>
+                    <div class="index_left_link1">
+                    	<div>国家、省各级部门导航</div>
+                        <div class="index_left_link2">
+                        <ul class="link">
+                        	<li><a href="" target="_blank">中国龙岩</a></li>
+                            <li><a href="" target="_blank">中国龙岩</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="index_left_link1">
+                    	<div>市级各级部门导航</div>
+                        <div class="index_left_link2">
+                        
+                        </div>
+                    </div>
+                    <div class="index_left_link1">
+                    	<div>县区各级部门导航</div>
+                        <div class="index_left_link2">
+                        
+                        </div>
+                    </div>
+                    <div class="index_left_link1">
+                    	<div>其他导航链接</div>
+                        <div class="index_left_link2">
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="index_right">
+            	<a href="" target="_blank"><img src="images/ldxx.jpg"></a>
+                <div style="height:10px;"></div>
+                <a href="" target="_blank"><img src="images/oa.jpg"></a>
+                <div style="height:10px;"></div>
+                <a href="" target="_blank"><img src="images/xmglxt.jpg"></a>
+                <div style="height:10px;"></div>
+                <img src="images/wsbs.jpg">
+                <div style="border:solid 1px #ccc; border-top:0px;height:110px;">
+                	<div style="width:70px; float:left; text-align:center; margin-left:40px;">
+                    	<img src="images/wsbs_bszn.jpg">
+                    </div>
+                    <div style="width:70px; float:left; text-align:center; margin-left:20px;">
+                    	<img src="images/wsbs_wjxz.jpg">
+                    </div>
+                </div>
+                <div style="height:10px;"></div>
+                <img src="images/gzcy.jpg">
+                <div style="border:solid 1px #ccc; border-top:0px;height:240px;">
+                	<div style="width:108px; float:left; text-align:center; margin-left:8px;"> <a href="#" target="_blank"><img src="images/gzcy_zxzx.jpg"></a>
+                    </div>
+                    <div style="width:108px; float:left; text-align:center; margin-left:5px;"> <a href="#" target="_blank"><img src="images/gzcy_jdts.jpg"></a>
+                    </div>
+                    <div style="width:108px; float:left; text-align:center; margin-left:8px; margin-top:8px;"> <a href="#" target="_blank"><img src="images/gzcy_myzj.jpg"></a>
+                    </div>
+                    <div style="width:108px; float:left; text-align:center; margin-left:5px; margin-top:8px;"> <a href="#" target="_blank"><img src="images/gzcy_xyxc.jpg"></a>
+                    </div>
+                    <div style="width:220px;height:40px; float:left;  margin-left:8px; margin-top:10px; background-image:url(images/t_bg.jpg);">
+                    	<div class="gzcy_bt1" id="gzcy_bt1" onmouseover="change_gzcy('gzcy_bt1','gzcy_bt2','gzcy_list1','gzcy_list2');"><div style="margin-top:10px;">网上调查</div></div>
+                        <div class="gzcy_bt2" id="gzcy_bt2" onmouseover="change_gzcy('gzcy_bt2','gzcy_bt1','gzcy_list2','gzcy_list1');"><div style="margin-top:10px;">常见问题</div></div>
+                    </div>
+                    <div id="gzcy_list1">
+                    	<ul class="gzcylist">
+                        <li>·<a href="" target="_blank">中国龙中国岩中国国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国国龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    </div>
+                    <div id="gzcy_list2" style="display:none;">
+                    	<ul class="gzcylist">
+                        <li>·<a href="" target="_blank">中国龙中国岩岩国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙国龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国国中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    </div>
+                </div>
+                 <div style="height:10px;"></div>
+                    <img src="images/ztlmxx.jpg">
+                    <div style="width:238px; height:303px;border:solid 1px #ccc; border-top:0px; text-align:center; padding:auto;">
+                        <center>
+                        	<div style="height:10px;"></div>
+                            <div style="width:220px;"> <a href="#" target="_blank"><img src="images/ztlm_zdxmqktb.jpg"></a>
+                          </div>
+                            <div style="width:220px; margin-top:8px;"> <a href="#" target="_blank"><img src="images/ztlm_zdxmjb.jpg"></a>
+                        </div>
+                            <div style="width:220px; margin-top:8px;"> <a href="#" target="_blank"><img src="images/ztlm_lysswxm.jpg"></a>
+                        </div>
+                            <div style="height:10px;"></div>
+                        </center>
+                    </div>
+                    
+                    <div style="width:240px;height:200px; border:solid 1px #ccc; margin-top:10px; background-image:url(images/t_bg.jpg); background-repeat:repeat-x;">
+                    	<div class="ph_bt1" id="ph_bt1" onmouseover="change_ph('ph_bt1','ph_bt2','ph_list1','ph_list2');"><div style="margin-top:10px;">文章排行</div></div>
+                        <div class="ph_bt2" id="ph_bt2" onmouseover="change_ph('ph_bt2','ph_bt1','ph_list2','ph_list1');"><div style="margin-top:10px;">栏目排行</div></div>
+                        <div id="ph_list1">
+                    	<ul class="phlist">
+                        <li>·<a href="" target="_blank">中国龙中国岩中国国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国国龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    </div>
+                    <div id="ph_list2" style="display:none;">
+                    	<ul class="phlist">
+                        <li>·<a href="" target="_blank">中国龙中国岩岩国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙国龙岩中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国国中国龙岩岩</a></li>
+                        <li>·<a href="" target="_blank">中国龙中国龙岩中国龙岩中国龙岩岩</a></li>
+                    	</ul>
+                    </div>
+                    </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="footer">
+    	<div class="footer_text">
+    	版权所有：龙岩市重点项目开发建设管理办公室 技术支持：龙岩市创高科技有限公司<br />
+        地址：福建省龙岩市龙岩大道1号市行政办公中心西副楼4楼 邮编：364000<br />
+        联系电话：0597-3212126 联系传真：0597-3212150 邮箱：lyxmkfjs@163.com<br />
+        </div>
+    </div>
+    </div>
+</body>
+</html>

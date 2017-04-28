@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people
+END
+PeopleConsultDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleConsultDao.java
+END
+PeopleQuestionDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleQuestionDao.java
+END
+PeopleSuggestionDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleSuggestionDao.java
+END
+PeopleVoteDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/contentmanagesystem/!svn/ver/247/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleVoteDao.java
+END
+PeopleAttendDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/contentmanagesystem/!svn/ver/246/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleAttendDao.java
+END
+PeopleMailDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/dao/people/PeopleMailDao.java
+END

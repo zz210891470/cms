@@ -1,0 +1,41 @@
+<div title="招商项目管理" iconcss="menu-icon-order" id="tab7">
+			<div style=" height:7px;"></div>
+				  <ul class="nlist">
+			<!--   <li><a class="l-link" href="javascript:f_addTab('zsxm_ll','项目信息录入','zsxm/ZsxmServlet?action=list')">项目信息录入</a></li> -->	
+				  <li><a class="l-link" href="javascript:f_addTab('zsxm_gl','项目信息管理','zsxm/ZsxmServlet?action=list')">项目信息管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zsxm_tj','项目汇总统计','zsxm/tj.jsp')">项目汇总统计</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zsxm_sz','项目设置管理','zsxm/sz.jsp')">项目设置管理</a></li>
+				  </ul>
+			</div> 
+			<div title="储备项目管理" iconcss="menu-icon-order" id="tab8">
+			<div style=" height:7px;"></div>
+				  <ul class="nlist">
+			<!-- 	  <li><a class="l-link" href="javascript:f_addTab('cbxm_ll','项目信息录入','cbxm/lr.jsp')">项目信息录入</a></li>  -->
+				  <li><a class="l-link" href="javascript:f_addTab('cbxm_sh','项目信息审核','cbxm/sh.jsp')">信息信息审核</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('cbxm_gl','项目信息管理','cbxm/CbxmServlet?action=list')">信息信息管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('cbxm_tj','项目汇总统计','cbxm/tj.jsp')">项目汇总统计</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('cbxm_sz','项目设置管理','cbxm/sz.jsp')">项目设置管理</a></li>
+				  </ul>
+			</div> 
+			<div title="重点项目管理" iconcss="menu-icon-order" id="tab9">
+			<div style=" height:7px;"></div>
+				  <ul class="nlist">
+			<!--  	  <li><a class="l-link" href="javascript:f_addTab('zdxm_ll','项目信息录入','zdxm/lr.jsp')">项目信息录入</a></li> -->
+				  <li><a class="l-link" href="javascript:f_addTab('zdxm_sh','项目信息审核','zdxm/sh.jsp')">项目信息审核</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdxm_gl','项目信息管理','zdxm/ZdxmServlet?action=list')">项目信息管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdxm_yb','项目月报管理','zdxm/yb.jsp')">项目月报管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdxm_tj','项目汇总统计','zdxm/tj.jsp')">项目汇总统计</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdxm_sz','项目设置管理','zdxm/sz.jsp')">项目设置管理</a></li>
+				  </ul>
+			</div> 
+			<div title="重大项目管理" iconcss="menu-icon-order" id="tab10">
+			<div style=" height:7px;"></div>
+				  <ul class="nlist">
+			<!--  	  <li><a class="l-link" href="javascript:f_addTab('zdaxm_ll','项目信息录入','zdaxm/lr.jsp')">项目信息录入</a></li>   -->
+				  <li><a class="l-link" href="javascript:f_addTab('zdaxm_sh','项目信息审核','zdaxm/sh.jsp')">项目信息审核</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdaxm_gl','项目信息管理','zdaxm/ZdaxmServlet?action=list')">项目信息管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdaxm_yb','项目月报管理','zdaxm/yb.jsp')">项目月报管理</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdaxm_tj','项目汇总统计','zdaxm/tj.jsp')">项目汇总统计</a></li>
+				  <li><a class="l-link" href="javascript:f_addTab('zdaxm_sz','项目设置管理','zdaxm/sz.jsp')">项目设置管理</a></li>
+				  </ul>
+			</div> 

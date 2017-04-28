@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools
+END
+verify_code.ashx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools/verify_code.ashx
+END
+submit_ajax.ashx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools/submit_ajax.ashx
+END
+download.ashx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools/download.ashx
+END
+upload_ajax.ashx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools/upload_ajax.ashx
+END
+admin_ajax.ashx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/WebRoot/admin/tools/admin_ajax.ashx
+END

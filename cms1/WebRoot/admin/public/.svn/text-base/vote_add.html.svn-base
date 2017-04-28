@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="stylesheet" type="text/css" href="../images/style.css">
+<script type="text/javascript" src="../lib/jquery/jquery-1.3.2.min.js"></script>  
+<script type="text/javascript" src="../js/function.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body class="mainbody">
+<div class="navigation"><a href="javascript:history.go(-1);" class="back">后退</a>首页 &gt; 公众参与管理 &gt; 网上调查管理</div>
+    <div id="contentTab">
+    <ul class="tab_nav">
+        <li class="selected"><a onclick="tabs('#contentTab',0);" href="javascript:;">添加网上调查</a></li>
+        <li><a onclick="tabs('#contentTab',1);" href="javascript:;">添加调查选项</a></li>
+    </ul>
+    
+    <div class="tab_con" style="display:block;">
+        <table class="form_table">
+            <col width="150px"><col>
+            <tbody>
+            <tr>
+                <th>开始时间：</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>结束时间：</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>调查标题：</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th height="200">调查说明：</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th height="100">反馈提示：</th>
+                <td></td>
+            </tr>
+         </tbody>
+       </table>
+    </div>
+    <div class="tab_con">
+    	<div style="height:35px;">
+    		<input type="button" value="插入单选" /> 
+    		<input type="button" value="插入多选" /> 
+    		<input type="button" value="插入填空" />
+    	</div>
+    	<table class="form_table">
+            <tr>
+                <td>
+                	<div >
+                		<div>Q1：<input type="text" /></div>
+                		<div style="padding-left:20px;">
+                			  <label><input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_0" />单选</label>
+                			  <br />
+                			  <label><input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_1" />单选</label>
+                			  <br />
+                		</div>
+                	</div>
+                	<div >
+                		<div>Q2：<input type="text" /></div>
+                		<div style="padding-left:20px;">
+                		    <label><input type="checkbox" name="CheckboxGroup1" value="复选框" id="CheckboxGroup1_0" />复选框</label>
+                		    <br />
+                		    <label><input type="checkbox" name="CheckboxGroup1" value="复选框" id="CheckboxGroup1_1" />复选框</label>
+                		</div>
+                	</div>
+                    <div >
+                		<div>Q3：<input type="text" /></div>
+                		<div style="padding-left:30px;">
+                		    <input type="text" />
+                		</div>
+                	</div>
+                </td>
+            </tr>
+       </table>
+    </div>
+</div>
+</body>
+</html>

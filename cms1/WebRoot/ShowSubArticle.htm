@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030" />
+<title>龙岩市重点项目开发建设管理办公室</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#div_wz{text-align:left;width:980px;line-height:30px; background:#eeeeee;}
+#div_bt{font-size:18px;width:900px; font-weight:600;line-height:50px; margin-top:20px; text-align:center;}
+#div_sx{font-size:12px;width:900px; color:#666;line-height:25px; text-align:center; border-bottom:solid 1px #aaa;}
+#div_nr{text-align:left;width:900px; margin-top:20px;}
+</style>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	function QueryString()
+	{
+	var name,value,i;
+	var str=location.href;
+	var num=str.indexOf("?")
+	str=str.substr(num+1);
+	var arrtmp=str.split("&");
+	for(i=0;i < arrtmp.length;i++){
+	num=arrtmp[i].indexOf("=");
+	if(num>0){
+	name=arrtmp[i].substring(0,num);
+	value=arrtmp[i].substr(num+1);
+	this[name]=value;
+	}
+	}
+	}
+   $(function(){
+        var Request=new QueryString();
+		var id=Request["id"];
+
+        if(id!=""){
+          getMainData(id);       
+        }
+   });
+
+   function getMainData(id){
+       $.post('ShowSubjectArticle?id='+id,function(data){         
+          if(data[0]=='SUCCESS'){
+             $('#main').html(data[1]);
+          }
+       },'json');
+   }
+   
+	function fontZoomA(){
+	 document.getElementById('main').style.fontSize='12px';
+	 document.getElementById('main').style.lineHeight='22px';
+	}
+	function fontZoomB(){
+	 document.getElementById('main').style.fontSize='14px';
+	 document.getElementById('main').style.lineHeight='26px';
+	}
+	function fontZoomC(){
+	 document.getElementById('main').style.fontSize='16px';
+	 document.getElementById('main').style.lineHeight='30px';
+	}
+</script>
+</head>
+
+<body>
+	<div style="width:1020px;background-image:url(images/line_bg.png); margin:auto;">
+	<div style=" text-align:center;"><iframe src="top.html" style="width:1000px;height:230px;" frameborder="0" scrolling="no"></iframe></div>
+    <div class="mainbody" align="center" style="width:980px;min-height:500px;_height:500px;">
+        <div id="main">
+        
+        </div>
+    </div>
+	<div style=" text-align:center;">
+	    <iframe src="footer.html" style="width:1000px;height:90px;margin-top:10px;" frameborder="0" scrolling="no"></iframe>
+	</div>    
+</div>
+</body>
+</html>

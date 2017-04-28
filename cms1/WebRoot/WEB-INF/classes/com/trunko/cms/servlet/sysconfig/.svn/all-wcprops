@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/contentmanagesystem/!svn/ver/162/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig
+END
+UrlManageServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/UrlManageServlet.java
+END
+SysColumnServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/contentmanagesystem/!svn/ver/273/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysColumnServlet.java
+END
+AdManageServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/AdManageServlet.java
+END
+SysUserServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/contentmanagesystem/!svn/ver/289/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysUserServlet.java
+END
+SpecialColumnServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SpecialColumnServlet.java
+END
+SysModelServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysModelServlet.java
+END
+SysLogServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysLogServlet.java
+END
+SysRoleServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysRoleServlet.java
+END
+SysConfigServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysConfigServlet.java
+END
+SysDataServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/contentmanagesystem/!svn/ver/251/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/sysconfig/SysDataServlet.java
+END

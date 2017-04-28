@@ -1,0 +1,223 @@
+package com.trunko.cms.dao.people;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.trunko.cms.entity.WebVote;
+import com.trunko.cms.entity.WebVoteAnswer;
+import com.trunko.cms.entity.WebVoteItem;
+import com.trunko.cms.util.DBHelper;
+import com.trunko.cms.util.DateHelper;
+import com.trunko.cms.util.Pager;
+
+public class PeopleVoteDao {
+	
+	public boolean deleteItem(String id){
+		  String sql="delete from web_voteitem where dcid="+id;
+		   if(DBHelper.executeUpdateInject(sql)>0){
+			   return true;
+		   }
+		   return false;		
+	}
+	
+	
+	public boolean deleteAnswer(List<Long> idList){
+		  String sql="delete from web_voteanswer where ";
+		   for(Long l:idList){	   
+			   sql+= " wtid="+l+"  or ";   
+		   }
+		   sql=sql.substring(0, sql.length()-4);
+		   if(DBHelper.executeUpdateInject(sql)>0){
+			   return true;
+		   }
+		   return false;
+	}
+	
+	public List<Long> getItemList(String id){
+		List<Long> idList=new ArrayList<Long>();
+		Connection conn = DBHelper.getConnection();
+		PreparedStatement stat =null;
+		ResultSet rs = null;
+		try {
+			String sql = "select * from web_voteitem where dcid=?";
+			stat = conn.prepareStatement(sql);
+		    stat.setLong(1, Long.valueOf(id));
+		    rs = stat.executeQuery();
+			while(rs.next()){
+				idList.add(rs.getLong("id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return idList;
+	}
+	
+	public boolean addAnswer(List<WebVoteAnswer> webVoteAnswers){
+		String sql="insert into web_voteanswer(wtid,da) values";
+		for(WebVoteAnswer w:webVoteAnswers){
+			sql+="("+w.getWtid()+",'"+w.getDa()+"')  ,";
+		}
+		sql=sql.substring(0,sql.length()-2);
+		if(DBHelper.executeUpdateInject(sql)>0){
+			   return true;
+		}
+        return false;
+	}
+	
+	public boolean addQuestion(WebVoteItem webVoteItem){
+		String sql="insert into web_voteitem(dcid,wt,type,sort) values("+webVoteItem.getDcid()+",'"+webVoteItem.getWt()
+	     +"',"+webVoteItem.getType()+","+webVoteItem.getSort()+")";
+			if(DBHelper.executeUpdateInject(sql)>0){
+				   return true;
+			}
+	    return false;
+	}
+	
+	public Long getNewVoteItem(){
+		
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+        Long id=0l;
+		try {
+			stat = conn.createStatement();
+			String countsql="select Max(id) as id from web_voteitem ";
+			rs=stat.executeQuery(countsql);
+			if(rs.next()){			
+				id=rs.getLong("id");
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return id;
+	}
+	
+	public Long getNewVote(){
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+        Long id=0l;
+		try {
+			stat = conn.createStatement();
+			String countsql="select Max(id) as id from web_vote ";
+			rs=stat.executeQuery(countsql);
+			if(rs.next()){
+				id=rs.getLong("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return id;
+
+	}
+
+	public boolean update(WebVote webVote){
+		String sql="update  web_vote set kssj='"+webVote.getKssj()+"',jssj='"+webVote.getJssj()
+	     +"',zt='"+webVote.getZt()+"',nr='"+webVote.getNr()
+	     +"' where id="+webVote.getId();
+		if(DBHelper.executeUpdateInject(sql)>0){
+			   return true;
+		}
+	    return false;
+	}
+	
+	
+	public WebVote getById(long id){
+		Connection conn = DBHelper.getConnection();
+		PreparedStatement stat =null;
+		ResultSet rs = null;
+        WebVote webVote=new WebVote();
+		try {
+			String countsql="select * from web_vote where id=?";
+			stat = conn.prepareStatement(countsql);
+		    stat.setLong(1, id);
+		    rs = stat.executeQuery();
+			if(rs.next()){
+				webVote.setId(rs.getLong("id"));
+				webVote.setZt(rs.getString("zt"));
+                webVote.setYhm(rs.getString("yhm"));
+				webVote.setNr(rs.getString("nr"));
+				webVote.setKssj(rs.getDate("kssj"));
+				webVote.setJssj(rs.getDate("jssj"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return webVote;
+	}
+
+	public boolean add(WebVote webVote){
+		
+		String sql="insert into web_vote(kssj,jssj,zt,nr) values('"+webVote.getKssj()+"','"+webVote.getJssj()
+		     +"','"+webVote.getZt()+"','"+webVote.getNr()+"')";
+		if(DBHelper.executeUpdateInject(sql)>0){
+			   return true;
+		}
+		return false;
+	}
+
+	public boolean delItemList(String[] ItemList){
+	   String sql="delete from web_vote where ";
+	   for(int i=0;i<ItemList.length;i++){	   
+		   sql+= " id="+ItemList[i]+"  or ";   
+	   }
+	   sql=sql.substring(0, sql.length()-4);
+	   if(DBHelper.executeUpdateInject(sql)>0){
+		   return true;
+	   }
+	   return false;
+	}
+
+	public Pager getItemForPage(int pageNo,int pageSize){
+		List<WebVote> itemlist=new ArrayList<WebVote>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+        int count=0;
+		try {
+			stat = conn.createStatement();
+			String countsql="select count(*) as num from web_vote ";
+			rs=stat.executeQuery(countsql);
+			if(rs.next()){
+				count=rs.getInt("num");
+			}
+			String sql = "select * from web_vote order by id desc limit "+((pageNo-1)*pageSize)+" , "+pageSize;
+			rs = stat.executeQuery(sql);
+			while(rs.next()){
+				WebVote webVote=new WebVote();
+				webVote.setId(rs.getLong("id"));
+				webVote.setZt(rs.getString("zt"));
+                webVote.setYhm(rs.getString("yhm"));
+				webVote.setNr(rs.getString("nr"));
+				webVote.setKssj(rs.getDate("kssj"));
+				webVote.setJssj(rs.getDate("jssj"));
+				if (DateHelper.getNowDate().compareTo(webVote.getKssj().toString()) < 0) {
+					webVote.setStatus("未开始");
+				} else if (DateHelper.getNowDate().compareTo(webVote.getJssj().toString()) > 0) {
+					webVote.setStatus("已结束");
+				} else {
+					webVote.setStatus("进行中");
+				}
+				itemlist.add(webVote);
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return new Pager(pageSize, pageNo, count, itemlist);
+	}
+}

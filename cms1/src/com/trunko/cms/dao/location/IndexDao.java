@@ -1,0 +1,393 @@
+package com.trunko.cms.dao.location;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.trunko.cms.entity.WebAdvert;
+import com.trunko.cms.entity.WebInfomation;
+import com.trunko.cms.entity.WebQuestion;
+import com.trunko.cms.entity.WebVote;
+import com.trunko.cms.entity.WebUrl;
+import com.trunko.cms.entity.WebLmph;
+import com.trunko.cms.util.DBHelper;
+
+
+/**
+ * 首页显示信息数据处理类
+ * @author gjz
+ *
+ */
+public class IndexDao {
+
+	/**
+	 * 得到热点数据
+	 * @return
+	 */
+	public WebInfomation getRD(){
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		WebInfomation webInfomation=new WebInfomation();
+
+		try {
+			stat = conn.createStatement();
+			String sql = "select * from web_infomation where  zt='已发布' and  rd=1 order by sj ";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				webInfomation.setId(rs.getLong("id"));
+				webInfomation.setBt(rs.getString("bt"));
+				webInfomation.setNr(rs.getString("nr"));
+				webInfomation.setSj(rs.getTimestamp("sj"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return webInfomation;
+
+	}
+	
+	
+	
+	/**
+	 * 得到滚动图片数据列表
+	 * @return
+	 */
+	public List<WebInfomation> getGDList(){
+		
+		List<WebInfomation> informationlist=new ArrayList<WebInfomation>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		
+
+		try {
+			stat = conn.createStatement();
+
+
+			String sql = "select * from web_infomation where  zt='已发布' and  gd=1 and  lstp is not null and lstp!=''  order by sj  limit 0,12";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebInfomation webInfomation=new WebInfomation();
+                
+				webInfomation.setId(rs.getLong("id"));
+				webInfomation.setBt(rs.getString("bt"));
+				webInfomation.setLmid(rs.getLong("lmid"));
+				webInfomation.setSx(rs.getString("sx"));
+				webInfomation.setSj(rs.getTimestamp("sj"));
+				webInfomation.setLstp(rs.getString("lstp"));
+				informationlist.add(webInfomation);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return informationlist;
+		
+		
+	}
+	
+	
+	
+	/**
+	 * 得到幻灯片数据列表
+	 * @return
+	 */
+	public List<WebInfomation> getHDList(){
+		
+		List<WebInfomation> informationlist=new ArrayList<WebInfomation>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		
+
+		try {
+			stat = conn.createStatement();
+
+
+			String sql = "select * from web_infomation where   zt='已发布' and hd=1 and  lstp is not null and lstp!=''  order by sj desc limit 0,6";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebInfomation webInfomation=new WebInfomation();
+                
+				webInfomation.setId(rs.getLong("id"));
+				webInfomation.setBt(rs.getString("bt"));
+				webInfomation.setLmid(rs.getLong("lmid"));
+				webInfomation.setSx(rs.getString("sx"));
+				webInfomation.setSj(rs.getTimestamp("sj"));
+				webInfomation.setLstp(rs.getString("lstp"));
+				informationlist.add(webInfomation);
+			}
+			System.out.println("webInfor:"+informationlist.size());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return informationlist;
+		
+		
+	}
+	
+	/**
+	 * 得到所有文章列表
+	 * @return
+	 */
+	public List<WebInfomation> getAllArticle(){
+		List<WebInfomation> informationlist=new ArrayList<WebInfomation>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		
+
+		try {
+			stat = conn.createStatement();
+
+
+			String sql = "select * from web_infomation where zt='已发布' order by rq desc, id desc";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebInfomation webInfomation=new WebInfomation();
+                
+				webInfomation.setId(rs.getLong("id"));
+				webInfomation.setBt(rs.getString("bt"));
+				webInfomation.setLlcs(rs.getInt("llcs"));
+				webInfomation.setLmid(rs.getLong("lmid"));
+				webInfomation.setSj(rs.getTimestamp("sj"));
+				webInfomation.setRq(rs.getDate("rq"));
+				informationlist.add(webInfomation);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return informationlist;
+		
+	}
+	
+	
+	//
+	/**
+	 * 得到常见问题文章列表
+	 * @return
+	 */
+	public List<WebQuestion> getQuestionList(){
+		List<WebQuestion> questionlist=new ArrayList<WebQuestion>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+
+		try {
+			stat = conn.createStatement();
+
+
+			String sql = "select * from web_question    order by id desc limit 0,4";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebQuestion webQuestion=new WebQuestion();
+                
+				webQuestion.setId(rs.getLong("id"));
+				webQuestion.setQuestion(rs.getString("question"));
+				webQuestion.setAnswer(rs.getString("answer"));
+				webQuestion.setTime(rs.getDate("time"));
+				webQuestion.setAuthor(rs.getString("author"));
+				webQuestion.setUrl(rs.getString("url"));
+				questionlist.add(webQuestion);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return questionlist;
+		
+	}
+	
+	//
+	/**
+	 * 得到投票列表
+	 * @return
+	 */
+	public List<WebVote> getVoteList(){
+		List<WebVote> votelist=new ArrayList<WebVote>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+
+		try {
+			stat = conn.createStatement();
+			String sql = "select * from web_vote   order by id desc limit 0,4";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebVote webVote=new WebVote();
+                
+				webVote.setId(rs.getLong("id"));
+				webVote.setZt(rs.getString("zt"));
+				votelist.add(webVote);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return votelist;
+		
+	}
+	
+	//
+	/**
+	 * 得到友情链接列表
+	 * @return
+	 */
+	public List<WebUrl> getUrlList(){
+		List<WebUrl> urllist=new ArrayList<WebUrl>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+
+		try {
+			stat = conn.createStatement();
+			String sql = "select * from web_url  order by pxh asc";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebUrl webUrl=new WebUrl();
+				webUrl.setMc(rs.getString("mc"));
+				webUrl.setUrl(rs.getString("url"));
+				webUrl.setPxh(rs.getString("pxh"));
+				webUrl.setLb(rs.getString("lb"));
+				urllist.add(webUrl);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return urllist;
+		
+	}
+	
+	/**
+	 * 得到所有广告
+	 * @return
+	 */
+	public List<WebAdvert> getAllAdverts(){
+		List<WebAdvert> advertlist=new ArrayList<WebAdvert>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		
+
+		try {
+			stat = conn.createStatement();
+
+
+			String sql = "select * from web_advert";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebAdvert webAdvert=new WebAdvert();
+                
+				webAdvert.setId(rs.getLong("id"));
+				webAdvert.setName(rs.getString("name"));
+				webAdvert.setImgurl(rs.getString("imgurl"));
+				webAdvert.setStatus(rs.getString("status"));
+				webAdvert.setUrl(rs.getString("url"));
+				advertlist.add(webAdvert);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+
+		return advertlist;
+		
+	}
+	
+	
+	//
+	/**
+	 * 得到文章排行列表
+	 * @return
+	 */
+	public List<WebInfomation> getWzphList(){
+		List<WebInfomation> informationlist=new ArrayList<WebInfomation>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;		
+		try {
+			stat = conn.createStatement();
+			String sql = "select * from web_infomation order by llcs desc limit 0,6";
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				WebInfomation webInfomation=new WebInfomation();
+                
+				webInfomation.setId(rs.getLong("id"));
+				webInfomation.setBt(rs.getString("bt"));
+				informationlist.add(webInfomation);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return informationlist;
+	}
+	
+	//
+	/**
+	 * 得到栏目排行列表
+	 * @return
+	 */
+	public List<WebLmph> getLmphList(){
+		List<WebLmph> lmphlist=new ArrayList<WebLmph>() ;
+		Connection conn = DBHelper.getConnection();
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+			stat = conn.createStatement();
+			String sql = "select * from web_lmph order by llcs desc ";
+			rs = stat.executeQuery(sql);
+			while(rs.next()){
+				WebLmph webLmph=new WebLmph();		
+				webLmph.setLmmc(rs.getString("lmmc"));
+				webLmph.setLlcs(rs.getLong("llcs"));
+				lmphlist.add(webLmph);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return lmphlist;
+	}
+}

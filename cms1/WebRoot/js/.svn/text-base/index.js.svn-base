@@ -1,0 +1,50 @@
+// JavaScript Document
+function change_news(id){
+	if(id==1){
+		document.getElementById("index_n").className="index_newslist1";
+		document.getElementById("index_new").className="index_new";
+		document.getElementById("index_notice").className="index_notice";
+		document.getElementById("index_new_list").style.display="";
+		document.getElementById("index_notice_list").style.display="none";
+		document.getElementById("index_new_more").style.display="";
+		document.getElementById("index_notice_more").style.display="none";
+		}
+	else{
+		document.getElementById("index_n").className="index_newslist1_1";
+		document.getElementById("index_new").className="index_new1";
+		document.getElementById("index_notice").className="index_notice1";
+		document.getElementById("index_new_list").style.display="none";
+		document.getElementById("index_notice_list").style.display="";
+		document.getElementById("index_new_more").style.display="none";
+		document.getElementById("index_notice_more").style.display="";
+		}
+	}
+function change(str1,str2,str3,str4,str5,str6){
+	document.getElementById(str1).className=str2;
+	document.getElementById(str3).style.display="";
+	document.getElementById(str4).style.display="none";
+	document.getElementById(str5).className="xxgk_bt1";
+	document.getElementById(str6).className="xxgk_bt2";
+}
+function change1(str1,str2,str3,str4,str5,str6,str7,str8){
+	document.getElementById(str1).className=str2;
+	document.getElementById(str3).style.display="";
+	document.getElementById(str4).style.display="none";
+	document.getElementById(str5).style.display="none";
+	document.getElementById(str6).className="xxgk_bt1";
+	document.getElementById(str7).className="xxgk_bt2";
+	document.getElementById(str8).className="xxgk_bt2";
+}
+
+function change_gzcy(str1,str2,str3,str4){
+	document.getElementById(str1).className="gzcy_bt1";
+	document.getElementById(str2).className="gzcy_bt2";
+	document.getElementById(str3).style.display="";
+	document.getElementById(str4).style.display="none";
+}
+function change_ph(str1,str2,str3,str4){
+	document.getElementById(str1).className="ph_bt1";
+	document.getElementById(str2).className="ph_bt2";
+	document.getElementById(str3).style.display="";
+	document.getElementById(str4).style.display="none";
+}

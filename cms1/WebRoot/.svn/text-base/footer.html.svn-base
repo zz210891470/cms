@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script>
+    function loadinfo(){
+        
+            
+        var dhspan = document.getElementById("dh");
+        var yxspan = document.getElementById("yx");   
+        var czspan = document.getElementById("cz");
+        dhspan.innerHTML=parent.getDh();
+        yxspan.innerHTML=parent.getYx();
+        czspan.innerHTML=parent.getCz();
+
+    }
+
+</script>
+</head>
+
+<body onload="loadinfo()">
+<div class="footer">
+    	<div class="footer_text">
+    	版权所有：龙岩市重点项目开发建设管理办公室 技术支持：龙岩市创高科技有限公司<br />
+        地址：福建省龙岩市龙岩大道1号市行政办公中心西副楼4楼 邮编：364000<br />
+        联系电话：<span id="dh">0597-3212126</span> 联系传真：<span id="cz">0597-3212150</span> 邮箱：<span id="yx">lyxmkfjs@163.com</span> [<a href="admin/login.html" target="_blank">登录</a>]<br />
+        </div>
+    </div>
+</body>
+</html>

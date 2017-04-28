@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people
+END
+PeopleConsultServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleConsultServlet.java
+END
+PeopleQuestionServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleQuestionServlet.java
+END
+PeopleSuggestionServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleSuggestionServlet.java
+END
+PeopleVoteServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/contentmanagesystem/!svn/ver/246/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleVoteServlet.java
+END
+PeopleAttendServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleAttendServlet.java
+END
+PeopleMailServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/servlet/people/PeopleMailServlet.java
+END

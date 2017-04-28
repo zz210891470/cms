@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030" />
+<title>龙岩市重点项目开发建设管理办公室</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-family:"宋体";color:#000000;}
+
+</style>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	function QueryString()
+	{
+	var name,value,i;
+	var str=location.href;
+	var num=str.indexOf("?")
+	str=str.substr(num+1);
+	var arrtmp=str.split("&");
+	for(i=0;i < arrtmp.length;i++){
+	num=arrtmp[i].indexOf("=");
+	if(num>0){
+	name=arrtmp[i].substring(0,num);
+	value=arrtmp[i].substr(num+1);
+	this[name]=value;
+	}
+	}
+	}
+   $(function(){
+        var Request=new QueryString();
+		var id=Request["id"];
+		var lb=Request["lb"];
+		
+        if(id!=""){
+          getMainData(lb,id);       
+        }
+   });
+
+   function getMainData(lb,id){
+       $.post('ShowArticle?lb='+lb+'&id='+id,function(data){         
+          if(data[0]=='SUCCESS'){
+             $('#main').html(data[1]);
+             $('#pic').trigger("click");
+          }
+       },'json');
+   }
+   
+   $(function(){
+       $("#pic").live("click",function(){
+           if($("#pic").css("width")>"750px"){
+               $("#pic").css("width","750px");
+           }
+               
+       });
+   
+   });
+   
+   
+	function fontZoomA(){
+	 document.getElementById('main').style.fontSize='12px';
+	 document.getElementById('main').style.lineHeight='22px';
+	}
+	function fontZoomB(){
+	 document.getElementById('main').style.fontSize='14px';
+	 document.getElementById('main').style.lineHeight='26px';
+	}
+	function fontZoomC(){
+	 document.getElementById('main').style.fontSize='16px';
+	 document.getElementById('main').style.lineHeight='30px';
+	}
+</script>
+
+
+</head>
+
+<body>
+	
+	<div style=" text-align:center;">
+	<iframe src="top.html" style="width:1000px;height:225px;" frameborder="0" scrolling="no"></iframe>
+	</div>
+    <div class="mainbody" align="center" style="width:1000px;" id="main">
+    </div>
+    <div style="clear:both;"></div>
+	<div style=" text-align:center;">
+	    <iframe src="footer.html" style="width:1000px;height:90px;margin-top:10px;" frameborder="0" scrolling="no"></iframe>
+	</div>    
+</div>
+</body>
+
+</html>

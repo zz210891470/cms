@@ -1,0 +1,1045 @@
+package com.trunko.project.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.trunko.cms.util.DBHelper;
+import com.trunko.cms.util.FavoritesHelper;
+import com.trunko.cms.util.Pager;
+import com.trunko.project.entity.ProCbxm;
+import com.trunko.project.entity.ProIndustry;
+
+/**
+ * 储备项目数据处理类
+ * @author jianhuang
+ *
+ */
+public class CbxmDao {
+	
+	
+
+	/**
+	 * 获取类别名称列表
+	 * @return List<String> itemlist
+	 */
+	public static List<String> getLb1List(){
+		// 地区名称列表集合
+		List<String> itemlist = new ArrayList<String>() ;
+		// 获取连接
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		try {
+			// 重点项目所属地区查询语句
+			String sql = "select * from tb_industry where lx='cb' and pid =0 order by px asc  ";
+			stat = conn.prepareStatement(sql);	
+			// 获取查询结果
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				itemlist.add(rs.getString("mc"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 释放连接
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return itemlist;
+	}
+	
+	
+	public static List<ProCbxm> getAllProList(String nd){
+		
+		// 储备项目信息列表
+		List<ProCbxm> itemlist = new ArrayList<ProCbxm>() ;
+		// 获取数据库连接
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		
+		// 构建查询语句
+		String sql = "select * from tb_cb_project  where zt != '未上报' and nd="+nd;
+		//　获取查询结果
+		try {
+			stat = conn.prepareStatement(sql);	
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				ProCbxm item = new ProCbxm();
+
+				item.setId(rs.getLong("id"));
+				item.setNd(rs.getLong("nd"));
+				item.setBh(rs.getString("bh"));
+				item.setMc(rs.getString("mc"));
+				item.setDq(rs.getString("dq"));
+				item.setJsgm(rs.getString("jsgm"));
+				item.setJsdd(rs.getString("jsdd"));
+				item.setZtz(rs.getDouble("ztz"));
+				item.setXyfx(rs.getString("xyfx"));
+				item.setSbdw(rs.getString("sbdw"));
+				item.setLxr(rs.getString("lxr"));
+				item.setLxdh(rs.getString("lxdh"));
+				item.setChdw(rs.getString("chdw"));
+				item.setLxr1(rs.getString("lxr1"));
+				item.setLxdh1(rs.getString("lxdh1"));
+				item.setBgs(rs.getString("bgs"));
+                item.setBssj(rs.getDate("bssj"));
+                
+                item.setLb1(rs.getString("lb1"));
+                item.setLb2(rs.getString("lb2"));
+                item.setLb3(rs.getString("lb3"));
+                
+                item.setZt(rs.getString("zt"));
+                item.setShyj(rs.getString("shyj"));
+				
+				
+				itemlist.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return itemlist;
+	}
+	
+	
+	/**
+	 * 获取储备项目信息汇总
+	 * @param nd   年度
+	 * @param lb1     类别：大类
+	 * @param lb2     类别：小类
+	 * @param dq   所属地区
+	 * @param ztz1  判断符（全部、大于等于、等于）
+	 * @param ztz1num 数值1
+	 * @param ztz2  判断符（全部、小于）
+	 * @param ztz2num 数值2
+	 * @return List itemlist 
+	 */
+	public static List<ProCbxm> showXxhzList(String nd,String  lb1,String lb2, String dq, String ztz1,String ztz1num ,String ztz2,String ztz2num){
+		// 储备项目信息列表
+		List<ProCbxm> itemlist = new ArrayList<ProCbxm>() ;
+		// 获取数据库连接
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		// 构建查询语句条件
+		String tempSql = "";
+		
+		if(nd != null && !nd.equals("")){		// 年度
+			tempSql += " and nd ="+nd;	
+		}
+
+		if(lb1 != null && !lb1.equals("")){		// 类别：大类
+			tempSql += " and lb1 ='"+lb1+"'";	
+		}
+		
+		if(lb2 != null && !lb2.equals("")){		// 类别：小类
+			tempSql += " and lb2 ='"+lb2+"'";	
+		}
+		if(dq != null && !dq.equals("")){		// 所属地区
+			tempSql += " and dq ='"+dq+"'";	
+		}
+		
+		if(ztz1 != null && !ztz1.equals("")){	 // 判断符（全部、大于等于、等于）
+			if("".equals(ztz1num)){	// 如果数值1为空，则取0
+				ztz1num = "0";
+			}
+			tempSql +=  " and ztz " + ztz1 + ztz1num;	
+		}
+		
+		if(ztz2 != null && !ztz2.equals("")){	// 判断符（全部、小于）
+			if("".equals(ztz2num)){	// 如果数值2为空，则取0
+				ztz2num = "0";
+			}
+			tempSql += " and ztz " + ztz2 + ztz2num;
+		}
+		// 替换判断符号
+		tempSql = tempSql.replaceAll("dydy", ">=").replaceAll("dy", "=").replaceAll("xy", "<");
+		// 构建查询语句
+		String sql = "select * from tb_cb_project  where zt = '已审核' "+tempSql+" order by bssj desc";
+		//　获取查询结果
+		try {
+			stat = conn.prepareStatement(sql);	
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				ProCbxm item = new ProCbxm();
+
+				item.setId(rs.getLong("id"));
+				item.setNd(rs.getLong("nd"));
+				item.setBh(rs.getString("bh"));
+				item.setMc(rs.getString("mc"));
+				item.setDq(rs.getString("dq"));
+				item.setJsgm(rs.getString("jsgm"));
+				item.setJsdd(rs.getString("jsdd"));
+				item.setZtz(rs.getDouble("ztz"));
+				item.setXyfx(rs.getString("xyfx"));
+				item.setSbdw(rs.getString("sbdw"));
+				item.setLxr(rs.getString("lxr"));
+				item.setLxdh(rs.getString("lxdh"));
+				item.setChdw(rs.getString("chdw"));
+				item.setLxr1(rs.getString("lxr1"));
+				item.setLxdh1(rs.getString("lxdh1"));
+				item.setBgs(rs.getString("bgs"));
+                item.setBssj(rs.getDate("bssj"));
+                
+                item.setLb1(rs.getString("lb1"));
+                item.setLb2(rs.getString("lb2"));
+                item.setLb3(rs.getString("lb3"));
+                
+                item.setZt(rs.getString("zt"));
+                item.setShyj(rs.getString("shyj"));
+				
+				
+				itemlist.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return itemlist;
+	}
+	
+	
+	
+	
+	
+	public static boolean audit(String id,String zt ,String shyj){
+		
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+        
+		String sql = "update tb_cb_project set zt='"+zt+"'"
+		                                   +" , shyj='"+shyj+"'"
+			                               +" where id=?";
+
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+
+   			stat.setLong(1, Long.valueOf(id));
+
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+		
+	}
+	
+	
+	public static boolean commit(String id){
+		
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+        
+		String sql = "update tb_cb_project set zt='已上报'"
+			                               +" where id=?";
+
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+
+   			stat.setLong(1, Long.valueOf(id));
+
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+		
+	}
+	
+	
+	public static String getLbList(){
+		
+
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+        String data = "";
+		try {
+
+			//TODO 添加分页条件 修改表名
+			String sql = "select * from tb_industry where lx='cb' order by px asc  ";
+				         
+			stat = conn.prepareStatement(sql);	
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+                data += "{pid:'"+rs.getLong("pid")+"',";
+                data += " id:'"+rs.getLong("id")+"',";
+                data += " mc:'"+rs.getString("mc")+"'},";
+				
+			}
+			// 如果获取的类别不为空
+			if(FavoritesHelper.isNotNull(data)){
+				data = data.substring(0,data.length()-1);
+			}
+			data = "["+data+"]";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return data;
+		
+	}
+
+	/**
+	 * 获取类别信息中的大类  add by lhanliang
+	 * 
+	 * @return List<ProIndustry> bigLbList
+	 */
+	public static List<ProIndustry> getBigLbList() {
+		// 大类list集合
+		List<ProIndustry> bigLbList = new ArrayList<ProIndustry>();
+		// 获取数据库连接
+		Connection conn = DBHelper.getConnection();
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		String sql = "select * from tb_industry where lx='cb' and pid=0 order by px asc  ";
+		//　获取查询结果
+		try {
+			stat = conn.prepareStatement(sql);	
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				// 构建类别的实体对象
+				ProIndustry item = new ProIndustry();
+
+				item.setId(rs.getLong("id"));  // 主键
+				item.setPid(rs.getLong("pid")); // 父类主键
+				item.setMc(rs.getString("mc")); // 名称
+				item.setPx(rs.getLong("px"));  // 排序号
+				item.setLx(rs.getString("lx"));  // 类型
+				
+				bigLbList.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		return bigLbList;
+
+	}
+	
+	
+
+	public static List<String> getDqList(){
+		
+		List<String> itemlist = new ArrayList<String>() ;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+
+		try {
+
+			//TODO 添加分页条件 修改表名
+			String sql = "select * from tb_area where lx='cb' order by px asc  ";
+				         
+			stat = conn.prepareStatement(sql);	
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+
+				itemlist.add(rs.getString("mc"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return itemlist;
+		
+	}
+	
+	
+	/**
+	 * 添加对象
+	 * @param item
+	 * @return
+	 */
+	public static boolean xlsImport(List<ProCbxm> itemList){
+
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+
+		String sql = "insert into tb_cb_project(nd,bh,mc,dq,jsgm,jsdd,ztz,xyfx,sbdw,lxr,lxdh,chdw,lxr1,lxdh1,bgs,bssj,zt,lb1,lb2,shyj,dzyx,dzyx1,dzyx2,zzdj,cbdw,lxr2,lxdh2,hzfs,lygc,tjzk,jsjjzb,jstj)"
+		                              +" values";
+		
+		for(int i = 0; i < itemList.size(); i ++){
+			
+			sql += " (? ,? ,? ,?   ,?   ,?   ,?  ,?   ,? ,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?  )  ,";
+		}
+		sql = sql.substring(0,sql.length()-2);
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+            int count = 1;
+   			for(int i = 0; i < itemList.size(); i ++){
+   	   			
+   	   			stat.setLong(count, itemList.get(i).getNd());
+   	   			stat.setString(count+1, itemList.get(i).getBh());
+   	   			stat.setString(count+2, itemList.get(i).getMc());
+   	   			stat.setString(count+3, itemList.get(i).getDq());
+   	   			stat.setString(count+4, itemList.get(i).getJsgm());
+   	   			stat.setString(count+5, itemList.get(i).getJsdd());
+   	   			stat.setDouble(count+6, itemList.get(i).getZtz());
+   	   			stat.setString(count+7, itemList.get(i).getXyfx());
+   	   			stat.setString(count+8, itemList.get(i).getSbdw());
+   	   			stat.setString(count+9, itemList.get(i).getLxr());
+   	   			stat.setString(count+10, itemList.get(i).getLxdh());
+   	   			stat.setString(count+11, itemList.get(i).getChdw());
+   	   			stat.setString(count+12, itemList.get(i).getLxr1());
+   	   			stat.setString(count+13, itemList.get(i).getLxdh1());
+   	   			stat.setString(count+14, itemList.get(i).getBgs());
+   	   			stat.setDate(count+15, itemList.get(i).getBssj());
+   	   			stat.setString(count+16, itemList.get(i).getZt());
+   	   			stat.setString(count+17, itemList.get(i).getLb1());
+   	   			stat.setString(count+18, itemList.get(i).getLb2());
+   	   			stat.setString(count+19, itemList.get(i).getShyj());
+	   	   		
+   	   			stat.setString(count+20, itemList.get(i).getDzyx());
+	   			stat.setString(count+21, itemList.get(i).getDzyx1());
+	   			stat.setString(count+22, itemList.get(i).getDzyx2());
+	   			stat.setString(count+23, itemList.get(i).getZzdj());
+	   			stat.setString(count+24, itemList.get(i).getCbdw());
+	   			stat.setString(count+25, itemList.get(i).getLxr2());
+	   			stat.setString(count+26, itemList.get(i).getLxdh2());
+	   			stat.setString(count+27, itemList.get(i).getHzfs());
+	   			stat.setString(count+28, itemList.get(i).getLygc());
+	   			stat.setString(count+29, itemList.get(i).getTjzk());
+	   			stat.setString(count+30, itemList.get(i).getJsjjzb());
+	   			stat.setString(count+31, itemList.get(i).getJstj());
+   				
+   	   			count = count + 32;
+   			}
+  
+
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+
+	}
+	
+
+	/**
+	 * 更改对象
+	 * @param item
+	 * @return
+	 */
+	public static boolean update(ProCbxm item){
+		
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+        
+		String sql = "update tb_cb_project set nd=?"
+				                           +",bh=?"
+			                               +",mc=?"
+			                               +",dq=?"
+				                           +",jsgm=?"
+			                               +",jsdd=?"
+				                           +",ztz=?"
+			                               +",xyfx=?"
+				                           +",sbdw=?"
+			                               +",lxr=?"
+			                               +",lxdh=?"
+			                               +",chdw=?"
+			                               +",lxr1=?"
+			                               +",lxdh1=?"
+			                               +",bgs=?"
+			                               +",bssj=?"
+			                               +",lb1=?"
+			                               +",lb2=?" 
+			                               +",dzyx=?" 
+			                               +",dzyx1=?" 
+			                               +",dzyx2=?" 
+			                               +",zzdj=?" 
+			                               +",cbdw=?" 
+			                               +",lxr2=?" 
+			                               +",lxdh2=?" 
+			                               +",hzfs=?" 
+			                               +",lygc=?" 
+			                               +",tjzk=?" 
+			                               +",jsjjzb=?" 
+			                               +",jstj=?" 
+			                               +" where id=?";
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+
+   			stat.setLong(1, item.getNd());
+   			stat.setString(2, item.getBh());
+   			stat.setString(3, item.getMc());
+   			stat.setString(4, item.getDq());
+   			stat.setString(5, item.getJsgm());
+   			stat.setString(6, item.getJsdd());
+   			stat.setDouble(7, item.getZtz());
+   			stat.setString(8, item.getXyfx());
+   			stat.setString(9, item.getSbdw());
+   			stat.setString(10, item.getLxr());
+   			stat.setString(11, item.getLxdh());
+   			stat.setString(12, item.getChdw());
+   			stat.setString(13, item.getLxr1());
+   			stat.setString(14, item.getLxdh1());
+   			stat.setString(15, item.getBgs());
+   			stat.setDate(16, item.getBssj());
+   			
+   			
+   			stat.setString(17, item.getLb1());
+   			stat.setString(18, item.getLb2());
+   			
+   			stat.setString(19, item.getDzyx());
+   			stat.setString(20, item.getDzyx1());
+   			stat.setString(21, item.getDzyx2());
+   			stat.setString(22, item.getZzdj());
+   			stat.setString(23, item.getCbdw());
+   			stat.setString(24, item.getLxr2());
+   			stat.setString(25, item.getLxdh2());
+   			stat.setString(26, item.getHzfs());
+   			stat.setString(27, item.getLygc());
+   			stat.setString(28, item.getTjzk());
+   			stat.setString(29, item.getJsjjzb());
+   			stat.setString(30, item.getJstj());
+   			
+   			stat.setLong(31, item.getId());
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+		
+	}
+	
+
+
+	/**
+	 * 添加对象
+	 * @param item
+	 * @return
+	 */
+	public static boolean add(ProCbxm item){
+
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+
+		String sql = "insert into tb_cb_project(nd,bh,mc,dq,jsgm,jsdd,ztz,xyfx,sbdw,lxr,lxdh,chdw,lxr1,lxdh1,bgs,bssj,zt,lb1,lb2,sbyh,dzyx,dzyx1,dzyx2,zzdj,cbdw,lxr2,lxdh2,hzfs,lygc,tjzk,jsjjzb,jstj)"
+		                              +" values(? ,? ,? ,? ,?   ,?   ,?  ,?   ,?   ,?  ,?   ,?   ,?   ,?    ,?  ,?   ,? ,?  , ? ,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+
+   			stat.setLong(1, item.getNd());
+   			stat.setString(2, item.getBh());
+   			stat.setString(3, item.getMc());
+   			stat.setString(4, item.getDq());
+   			stat.setString(5, item.getJsgm());
+   			stat.setString(6, item.getJsdd());
+   			stat.setDouble(7, item.getZtz());
+   			stat.setString(8, item.getXyfx());
+   			stat.setString(9, item.getSbdw());
+   			stat.setString(10, item.getLxr());
+   			stat.setString(11, item.getLxdh());
+   			stat.setString(12, item.getChdw());
+   			stat.setString(13, item.getLxr1());
+   			stat.setString(14, item.getLxdh1());
+   			stat.setString(15, item.getBgs());
+   			stat.setDate(16, item.getBssj());
+
+   			stat.setString(17, item.getZt());
+   			stat.setString(18, item.getLb1());
+   			stat.setString(19, item.getLb2());
+   			stat.setString(20, item.getSbyh());
+   			
+   			stat.setString(21, item.getDzyx());
+   			stat.setString(22, item.getDzyx1());
+   			stat.setString(23, item.getDzyx2());
+   			stat.setString(24, item.getZzdj());
+   			stat.setString(25, item.getCbdw());
+   			stat.setString(26, item.getLxr2());
+   			stat.setString(27, item.getLxdh2());
+   			stat.setString(28, item.getHzfs());
+   			stat.setString(29, item.getLygc());
+   			stat.setString(30, item.getTjzk());
+   			stat.setString(31, item.getJsjjzb());
+   			stat.setString(32, item.getJstj());
+   			
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+
+	}
+	
+	/**
+	 * 批量或单个删除数据
+	 * @param ItemList
+	 * @return
+	 */
+	public static boolean delItemList(String[] ItemList){
+		
+		Boolean isOk = false;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+
+	    String sql = "delete from tb_cb_project where ";
+		
+	    for(int i = 0; i < ItemList.length; i++){	   
+		    sql += " id=?   or ";   
+	    }
+	    sql=sql.substring(0, sql.length()-4);
+	    
+		System.out.println(sql);
+	
+		try {
+   			stat = conn.prepareStatement(sql);			
+   		    
+   			for(int i = 0; i < ItemList.length; i++){
+   			    stat.setLong(( i + 1 ), Long.valueOf(ItemList[i]));
+   			}
+
+   			if(stat.executeUpdate() > 0){
+   				isOk = true;
+   			}
+   			
+   		} catch (SQLException e) {
+   			e.printStackTrace();
+   		}finally{
+   			DBHelper.closeDB(conn, stat);
+   		}	
+
+	    return isOk;
+
+	}
+
+	/**
+	 * 通过Id得到对象
+	 * @param id
+	 * @return
+	 */
+	public static ProCbxm getObjById(Long id){
+		
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		
+		ProCbxm item =new ProCbxm();
+
+        String sql = "select * from tb_cb_project where id=?";
+		try {
+			stat = conn.prepareStatement(sql);	
+
+			stat.setLong(1, id);
+		
+			rs = stat.executeQuery();	
+			
+			if(rs.next()){
+
+				item.setId(rs.getLong("id"));
+				item.setNd(rs.getLong("nd"));
+				item.setBh(rs.getString("bh"));
+				item.setMc(rs.getString("mc"));
+				item.setDq(rs.getString("dq"));
+				item.setJsgm(rs.getString("jsgm"));
+				item.setJsdd(rs.getString("jsdd"));
+				item.setZtz(rs.getDouble("ztz"));
+				item.setXyfx(rs.getString("xyfx"));
+				item.setSbdw(rs.getString("sbdw"));
+				item.setLxr(rs.getString("lxr"));
+				item.setLxdh(rs.getString("lxdh"));
+				item.setChdw(rs.getString("chdw"));
+				item.setLxr1(rs.getString("lxr1"));
+				item.setLxdh1(rs.getString("lxdh1"));
+				item.setBgs(rs.getString("bgs"));
+                item.setBssj(rs.getDate("bssj"));
+                
+                item.setLb1(rs.getString("lb1"));
+                item.setLb2(rs.getString("lb2"));
+                item.setLb3(rs.getString("lb3"));
+                
+                item.setZt(rs.getString("zt"));
+                item.setShyj(rs.getString("shyj"));
+                
+                item.setDzyx(rs.getString("dzyx"));
+        		item.setDzyx1(rs.getString("dzyx1"));
+        		item.setDzyx2(rs.getString("dzyx2"));
+        		item.setZzdj(rs.getString("zzdj"));
+        		item.setCbdw(rs.getString("cbdw"));
+        		item.setLxr2(rs.getString("lxr2"));
+        		item.setLxdh2(rs.getString("lxdh2"));
+        		item.setHzfs(rs.getString("hzfs"));
+        		item.setLygc(rs.getString("lygc"));
+        		item.setJstj(rs.getString("jstj"));
+        		item.setJsjjzb(rs.getString("jsjjzb"));
+        		item.setTjzk(rs.getString("tjzk"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return item;
+	
+	}
+	
+	
+	/**
+	 * 得到分页数据类
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public static Pager getObjForPage(int pageNo, int pageSize, String searchStr){
+		
+		List<ProCbxm> itemlist = new ArrayList<ProCbxm>() ;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		
+		String tempSql;
+        if(searchStr==null||searchStr.equals("")){
+        	tempSql="";     	
+        }else{
+        	tempSql=" and mc  like '%"+searchStr+"%' "; 	
+        }
+		
+		int count=0;
+		try {
+			//TODO 添加分页统计条件 修改表名
+			String countsql = "select count(*) as num    from tb_cb_project where zt='已审核' "+tempSql;
+			stat = conn.prepareStatement(countsql);	
+			
+			rs=stat.executeQuery(countsql);
+			
+			if(rs.next()){
+				count = rs.getInt("num");
+			}
+
+			//TODO 添加分页条件 修改表名
+			String sql = "select * from tb_cb_project where zt='已审核'  "+tempSql+" order by bssj desc limit "
+				         + ((pageNo - 1) * pageSize) + " , " + pageSize;
+			
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				ProCbxm item = new ProCbxm();
+				
+				item.setId(rs.getLong("id"));
+				item.setNd(rs.getLong("nd"));
+				item.setBh(rs.getString("bh"));
+				item.setMc(rs.getString("mc"));
+				item.setDq(rs.getString("dq"));
+				item.setJsgm(rs.getString("jsgm"));
+				item.setJsdd(rs.getString("jsdd"));
+				item.setZtz(rs.getDouble("ztz"));
+				item.setXyfx(rs.getString("xyfx"));
+				item.setSbdw(rs.getString("sbdw"));
+				item.setLxr(rs.getString("lxr"));
+				item.setLxdh(rs.getString("lxdh"));
+				item.setChdw(rs.getString("chdw"));
+				item.setLxr1(rs.getString("lxr1"));
+				item.setLxdh1(rs.getString("lxdh1"));
+				item.setBgs(rs.getString("bgs"));
+                item.setBssj(rs.getDate("bssj"));
+                
+                item.setLb1(rs.getString("lb1"));
+                item.setLb2(rs.getString("lb2"));
+                item.setLb3(rs.getString("lb3"));
+                
+                item.setZt(rs.getString("zt"));
+                item.setShyj(rs.getString("shyj"));
+				itemlist.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return new Pager(pageSize, pageNo, count, itemlist);
+	}
+	
+	/**
+	 * 得到审核分页数据类
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public static Pager getObjForAudit(int pageNo, int pageSize, String searchStr){
+		
+		List<ProCbxm> itemlist = new ArrayList<ProCbxm>() ;
+  		Connection conn = DBHelper.getConnection();
+        PreparedStatement stat = null;	
+		ResultSet rs = null;
+		
+		String tempSql;
+        if(searchStr==null||searchStr.equals("")){
+        	tempSql="";     	
+        }else{
+        	tempSql=" and mc  like '%"+searchStr+"%' "; 	
+        }
+		
+		int count=0;
+		try {
+			//TODO 添加分页统计条件 修改表名
+			String countsql = "select count(*) as num  from tb_cb_project where zt='已上报' "+tempSql;
+			stat = conn.prepareStatement(countsql);	
+			
+			rs=stat.executeQuery(countsql);
+			
+			if(rs.next()){
+				count = rs.getInt("num");
+			}
+
+			//TODO 添加分页条件 修改表名
+			String sql = "select * from tb_cb_project where zt='已上报'  "+tempSql+" order by bssj desc limit "
+				         + ((pageNo - 1) * pageSize) + " , " + pageSize;
+			
+			rs = stat.executeQuery(sql);	
+			while(rs.next()){
+				ProCbxm item = new ProCbxm();
+				
+				item.setId(rs.getLong("id"));
+				item.setNd(rs.getLong("nd"));
+				item.setBh(rs.getString("bh"));
+				item.setMc(rs.getString("mc"));
+				item.setDq(rs.getString("dq"));
+				item.setJsgm(rs.getString("jsgm"));
+				item.setJsdd(rs.getString("jsdd"));
+				item.setZtz(rs.getDouble("ztz"));
+				item.setXyfx(rs.getString("xyfx"));
+				item.setSbdw(rs.getString("sbdw"));
+				item.setLxr(rs.getString("lxr"));
+				item.setLxdh(rs.getString("lxdh"));
+				item.setChdw(rs.getString("chdw"));
+				item.setLxr1(rs.getString("lxr1"));
+				item.setLxdh1(rs.getString("lxdh1"));
+				item.setBgs(rs.getString("bgs"));
+                item.setBssj(rs.getDate("bssj"));
+                
+                item.setLb1(rs.getString("lb1"));
+                item.setLb2(rs.getString("lb2"));
+                item.setLb3(rs.getString("lb3"));
+                
+                item.setZt(rs.getString("zt"));
+                item.setShyj(rs.getString("shyj"));
+				itemlist.add(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.closeDB(conn, stat, rs);
+		}
+		
+		return new Pager(pageSize, pageNo, count, itemlist);
+	}
+
+
+
+
+	/**
+	 * 获取分类汇总统计信息
+	 * @param year 年度
+	 * @return  Map<String, List<String>> sortInfoMap
+	 */
+	public static Map<String, List<String>> getSortInfoMap(String year) {
+		// 分类统计信息集合（key:类别名称，value:类别所对应的项目总数和总投资）
+		Map<String, List<String>> sortInfoMap = new HashMap<String, List<String>>();
+		// 类别大类
+		List<ProIndustry> sortList = getBigLbList();
+		//　遍历类别，根据类别名称和日期查询各类别下的各项目的总数和总投资
+		if (sortList != null) { 
+			for (int i = 0; i < sortList.size(); i++) {
+				List<String> countList = new ArrayList<String>(); // 统计信息集合包括项目总数和总投资
+				ProIndustry industry = sortList.get(i); // 类别对象
+				String sortName = industry.getMc();	// 类别的名称
+				// 项目总数和总投资SQL
+				String countSql = "select count(*) as num,sum(t.ztz) as num1 from tb_cb_project t where t.zt = '已审核' and t.lb1 = '"+ sortName +"'"; 
+				if(!"".equals(year) && null != year){ // 如果年度不为空
+					countSql += " and t.nd =" + year;
+				}
+				// 获取数据库连接
+				Connection conn = DBHelper.getConnection();
+				PreparedStatement stat = null;
+				ResultSet rs = null;
+				try {
+					// 查询项目总数、总投资金额
+					stat = conn.prepareStatement(countSql);	
+					rs = stat.executeQuery(countSql);	
+					while(rs.next()){
+						countList.add(rs.getInt("num")+"");
+						countList.add(rs.getInt("num1")+"");
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {  // 释放连接
+					DBHelper.closeDB(conn, stat, rs);
+				}
+				// 添加分类信息
+				sortInfoMap.put(sortName, countList);
+			}
+		}
+		return sortInfoMap;
+	}
+	/**
+	 * 获取分级汇总统计信息
+	 * @param year 年度
+	 * @return  Map<String, List<String>> sortInfoMap
+	 */
+	public static Map<String, List<String>> getAreaInfoMap(String year) {
+		// 分级统计信息集合（key:所属地区名称，value:地区所对应的项目总数和总投资）
+		Map<String, List<String>> areaInfoMap = new HashMap<String, List<String>>();
+		// 所属地区集合
+		List<String> areaList = getDqList();
+		//　遍历地区集合，根据地区名称和日期查询各地区下的各项目的总数和总投资
+		if (areaList != null) { 
+			for (int i = 0; i < areaList.size(); i++) {
+				List<String> countList = new ArrayList<String>(); // 统计信息集合，包括项目总数和总投资
+				String areaName = areaList.get(i);	// 类别的名称
+				// 项目总数和总投资SQL
+				String countSql = "select count(*) as num, sum(t.ztz) as num2 from tb_cb_project t where t.zt = '已审核' and t.dq = '"+ areaName +"'"; 
+				if(!"".equals(year) && null != year){ // 如果年度不为空
+					countSql += " and t.nd =" + year;
+				}
+				// 获取数据库连接
+				Connection conn = DBHelper.getConnection();
+				PreparedStatement stat = null;
+				ResultSet rs = null;
+				try {
+					// 查询项目总数和总投资SQL
+					stat = conn.prepareStatement(countSql);	
+					rs = stat.executeQuery(countSql);	
+					while(rs.next()){
+						countList.add(rs.getInt("num")+"");
+						countList.add(rs.getInt("num2")+"");
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {  // 释放连接
+					DBHelper.closeDB(conn, stat, rs);
+				}
+				// 添加分级信息
+				areaInfoMap.put(areaName, countList);
+			}
+		}
+		return areaInfoMap;
+	}
+	
+	  public  static boolean saveToWebInfo(ProCbxm item){
+		  String sql="insert into web_infomation(lmid,bt,rq,nr,zt,fbr)values(?,?,?,?,?,?)";
+		  Connection conn = null;
+		  PreparedStatement ps = null;
+		  conn =DBHelper.getConnection();
+		  try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, 73);
+			ps.setString(2,item.getMc() );
+			ps.setDate(3, new Date(new java.util.Date().getTime()));
+			
+			String data="";
+			
+			data+="<table border='1' style='width:95%;margin:0 auto;' align='center' >";
+			if(item.getDq()!=null){
+				data+="<tr><td height=\"30\" width='120' align=\"center\" >行政区域</td><td height='30'>"+item.getDq()+"</td></tr>";
+			}else{
+				data+="<tr><td height='30' align=\"center\" >行政区域</td><td height='30'></td></tr>";
+			}
+			
+			data+="<tr><td height=\"30\" align=\"center\" >项目名称</td><td height='30'>"+item.getMc()+"</td></tr>";
+			if(item.getLb2()==null){
+				data+="<tr><td height='30' align=\"center\" >行业类别</td><td height='30'>大类:"+item.getLb1()+"</br>小类:</td></tr>";
+				
+			}else{
+				data+="<tr><td height='30' align=\"center\" >行业类别</td><td height='30'>大类:"+item.getLb1()+"</br>小类:"
+				+item.getLb2()+"</td></tr>";
+			}
+			
+			
+			data+="<tr><td height='30' align=\"center\">联系单位</td><td height='30'>"+item.getSbdw()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">联系方式</td><td height='30'>联系人:"+item.getLxr()+"&nbsp;&nbsp;" +
+					"电话:"+item.getLxdh()+"&nbsp;&nbsp;"+"电子邮箱:"+item.getDzyx()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">承办单位</td><td height='30'>"+item.getCbdw()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">联系方式</td><td height='30'>联系人:"+item.getLxr2()+"&nbsp;&nbsp;" +
+			"电话:"+item.getLxdh2()+"&nbsp;&nbsp;"+"电子邮箱:"+item.getDzyx2()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">合作方式</td><td height='30'>"+item.getHzfs()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">事项名称</td><td height='30' align=\"center\">内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容</td></tr>";
+			data+="<tr><td height='30' align=\"center\">项目提出的理由与过程</td><td height='30'>"+item.getLygc()+"</td></tr>";
+			data+="<tr><td height='30' align=\"center\">项目概况</td><td height='30'><b>建设规模及内容：</b><br/>"+item.getJsgm()+
+					"<br/><b>主要建设条件：</b><br/>"+item.getJstj()+"<br/>"+"<b>经济效益情况：</b><br/>"+item.getXyfx()+"<br/>"+""+"<b>主要技术经济指标：</b><br/>"+item.getJsjjzb()+"</td></tr>";
+			
+			
+			data+="<tr><td height='30' align=\"center\">项目推进状况</td><td height='30'>"+item.getTjzk()+"</td></tr></table>";
+
+			ps.setString(4, data);
+		    ps.setString(5, "已发布");
+		    ps.setString(6, "开发评审科");
+		    ps.executeUpdate();
+		    
+			return true;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally{
+			DBHelper.closeDB(conn, ps);
+		}
+		return false;
+		  	  	 
+		 
+	 }
+	
+	
+}
+

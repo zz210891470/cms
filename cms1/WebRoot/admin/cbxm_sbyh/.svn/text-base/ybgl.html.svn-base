@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<link rel="stylesheet" type="text/css" href="../images/style.css"/>
+	<script type="text/javascript" src="../js/jquery.js"></script>  
+	<script type="text/javascript">
+	
+	    function showyb(id){
+	        $("#yblb").attr("src","ZdxmSbyhServlet?action=yblb&id="+id);
+	    }
+	
+	</script>
+  </head>
+  <body class="mainbody" scroll="no">
+	<table style="height:100%;width:100%;" border="0">
+	<tr>
+		<td height="30" colspan="2">
+			<div class="navigation">首页 &gt; 重点项目管理 &gt; 项目月报管理</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="width:40%">
+			<iframe src="ZdxmSbyhServlet?action=xmyblb" name="xmlb" style="width:100%;height:100%;" frameborder="0" scrolling="auto"></iframe>
+		</td>
+		<td>
+			<iframe src="" name="yblb" id="yblb" style="width:100%;height:1800px;" frameborder="0" scrolling="auto"></iframe>
+		</td>
+	</tr>
+	</table>
+    	
+    	
+  </body>
+</html>

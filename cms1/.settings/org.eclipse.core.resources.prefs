@@ -1,0 +1,11 @@
+#Wed Jan 06 15:34:00 CST 2016
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/mysql_config.properties=GBK
+encoding//WebRoot/WEB-INF/web_service.properties=GBK
+encoding//WebRoot/admin/lib=UTF-8
+encoding//WebRoot/cbArticle.jsp=UTF-8
+encoding//WebRoot/js/jPages.js=UTF-8
+encoding//WebRoot/js/page.js=UTF-8
+encoding//WebRoot/pic.jsp=UTF-8
+encoding//src/com/trunko/cms/util/XSSRequestWrapper.java=UTF-8
+encoding/<project>=GBK

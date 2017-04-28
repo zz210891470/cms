@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>龙岩市重点项目开发建设管理办公室</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div style="width:1020px;background-image:url(images/line_bg.png); margin:auto;">
+	<div style=" text-align:center;"><iframe src="top.html" style="width:1000px;height:230px;" frameborder="0" scrolling="no"></iframe></div>
+    <div class="mainbody" align="center">
+    	<div class="infolist_left">
+            <div class="infolist_left_xxgk">
+            	<img src="images/info_zfxxgk.jpg">
+            </div>
+        	<div class="infolist_left_top" style="background-image:url(images/info_xxgk.jpg);"></div>
+          	<div class="infolist_lett_link"><a href="#" target="_self" class="info_a">机构介绍</a></div>
+          	<div class="infolist_lett_link"><a href="#" target="_self" class="info_a">领导信息</a></div>
+          	<div class="infolist_lett_link"><a href="#" target="_self" class="info_a">部门设置</a></div>
+          	<div class="infolist_lett_link"><a href="#" target="_self" class="info_a">联系方式</a></div>
+        </div>
+    <div class="infolist_right">
+        	<div class="address"><span>当前位置：<a href="#" target="_self">网站首页</a> > 信息公开</span></div>
+      </div>
+    </div>
+	<div style=" text-align:center;"><iframe src="footer.html" style="width:1000px;height:90px;margin-top:10px;" frameborder="0" scrolling="no"></iframe></div>    
+</div>
+</body>
+</html>

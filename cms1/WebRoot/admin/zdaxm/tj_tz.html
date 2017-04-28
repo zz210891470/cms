@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<link rel="stylesheet" type="text/css" href="../images/style.css"/>
+</head>
+
+<body class="mainbody">
+	<form name="frm" id="frm" method="post" target="_blank" action="">
+        <table border="1" align="center" cellSpacing="0" borderColorLight="#cccccc" borderColorDark="#ffffff" style="width:500px;">
+            <tbody>
+            <tr>
+                <th height="40" align="left" bgcolor="#F4F4F4" style="width:85px;">报表年度</th>
+                <td>
+                    <select name="nd" class="select2">
+                    	<script type="text/javascript" language="javascript">
+						var NowDate=new Date();
+						var NowYear=NowDate.getYear();
+						for(var i=2010;i<=NowYear;i++)
+							{
+							if(i<NowYear)
+								{document.write("<option value='"+i+"'>"+i+"</option>");}
+							else
+								{document.write("<option value='"+i+"' selected>"+i+"</option>");}
+							}
+						</script>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th height="40" align="left" bgcolor="#F4F4F4" style="width:85px;">所属地区</th>
+                <td>
+                    <select name="dq" class="select2"></select>
+                </td>
+            </tr>
+            <tr>
+            	<td height="40" colSpan="2" align="center">
+                	<input type="submit" value="确 定" class="btnSearch" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/contentmanagesystem/!svn/ver/155/trunk/newcms/cmsnew/src/com/trunko/cms/entity
+END
+WebRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebRole.java
+END
+WebUrl.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebUrl.java
+END
+WebInfomation.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/264/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebInfomation.java
+END
+WebConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebConfig.java
+END
+WebSubInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebSubInfo.java
+END
+WebQuestion.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebQuestion.java
+END
+WebSubColumn.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebSubColumn.java
+END
+WebInfoGuide.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebInfoGuide.java
+END
+WebVoteUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebVoteUser.java
+END
+WebInfoOpen.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebInfoOpen.java
+END
+Uploader.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/Uploader.java
+END
+WebVote.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/contentmanagesystem/!svn/ver/247/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebVote.java
+END
+WebUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebUser.java
+END
+WebLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebLog.java
+END
+WebZfxxgk.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebZfxxgk.java
+END
+WebAdvert.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebAdvert.java
+END
+WebInfoReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebInfoReport.java
+END
+WebConsult.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebConsult.java
+END
+WebSuggestion.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebSuggestion.java
+END
+WebLeaderStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebLeaderStep.java
+END
+WebInfoReg.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebInfoReg.java
+END
+WebLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebLeader.java
+END
+ProYbUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/155/trunk/newcms/cmsnew/src/com/trunko/cms/entity/ProYbUser.java
+END
+WebVoteItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebVoteItem.java
+END
+WebColumn.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebColumn.java
+END
+WebVoteAnswer.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebVoteAnswer.java
+END
+WebLeaderMail.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/244/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebLeaderMail.java
+END
+WebDataBackup.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/contentmanagesystem/!svn/ver/237/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebDataBackup.java
+END
+WebLmph.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebLmph.java
+END
+WebModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/contentmanagesystem/!svn/ver/146/trunk/newcms/cmsnew/src/com/trunko/cms/entity/WebModel.java
+END
